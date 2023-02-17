@@ -33,13 +33,13 @@ router.post('/signup',(req,res)=>{
     
             })
             .catch(err=>{
-                console.log(err)
+                res.status(400).json({err})
             })
         })
 
     })
     .catch(err=>{
-        console.log(err)
+        res.status(400).json({err})
     })
 })
 
@@ -67,7 +67,7 @@ router.post('/signin',(req,res)=>{
             }
         })
         .catch(err=>{
-            console.log(err)
+            res.ststus(400).json({err})
         })
     })
 })
