@@ -7,7 +7,7 @@ const User = require('../models/userModel')
 const bcrypt = require('bcrypt')
 const jwt  = require('jsonwebtoken')
 const secret = process.env.SECRET
-const requireLogin = require('../middleware/requireLogin')
+
 
 
 router.post('/signup',(req,res)=>{

@@ -2,11 +2,11 @@ require('dotenv').config()
 const express = require('express')
 const app = express()
 const mongoose = require("mongoose")
-require('./models/userModel')
-require('./models/postModel')
+// require('./models/userModel')
+// require('./models/postModel')
 app.use(express.json())
-app.use(require('./routes/auth'))
-app.use(require('./routes/post'))
+app.use('/auth',require('./routes/auth'))
+app.use('/projects',require('./routes/post'))
 
 
 
