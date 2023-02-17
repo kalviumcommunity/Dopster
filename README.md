@@ -29,3 +29,19 @@ Made client and server folders
 | CRUD Operations    |      |      |
 | Simple API - CRUD Operations using NodeJs    |      |      |
 |Schemas and Models     |      |      |
+
+| Full Stack| Status | PR Link |
+| :---         |     :---:      |          ---: |
+| IDE Setup   |      |      |
+| Node Js Setup    |      |      |
+| Using Public folder to serve files   |      |      |
+| Postman    |      |      |
+| Authentication   |      |      |
+| Deployment   |      |      |
+
+| Front-end| Status | PR Link |
+| :---         |     :---:      |          ---: |
+| High-Fid design   |      |      |
+| React App initialization   |      |      |
+| Components created   |      |      |
+| App deployment   |      |      |
