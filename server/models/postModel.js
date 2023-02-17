@@ -22,4 +22,4 @@ required:true
         ref:"User"
     }
 })
-mongoose.model("Post",postSchema)
+module.exports = mongoose.model("Post",postSchema)

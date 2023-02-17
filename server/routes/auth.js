@@ -1,8 +1,9 @@
 const express = require('express')
 const router = express.Router()
-const mongoose  = require('mongoose')
+
 require('dotenv').config()
-const User = mongoose.model("User")
+
+const User = require('../models/userModel')
 const bcrypt = require('bcrypt')
 const jwt  = require('jsonwebtoken')
 const secret = process.env.SECRET
@@ -33,13 +34,13 @@ router.post('/signup',(req,res)=>{
     
             })
             .catch(err=>{
-                res.status(400).json({err})
+                res.status(400).json({error:err.message})
             })
         })
 
     })
     .catch(err=>{
-        res.status(400).json({err})
+        res.status(400).json({error:err.message})
     })
 })
 
@@ -67,7 +68,7 @@ router.post('/signin',(req,res)=>{
             }
         })
         .catch(err=>{
-            res.ststus(400).json({err})
+            res.status(400).json({error:err.message})
         })
     })
 })
