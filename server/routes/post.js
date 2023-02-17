@@ -11,7 +11,7 @@ router.get('/allprojects',(req,res)=>{
         res.json({posts})
     })
     .catch(err=>{
-        console.log(err)
+        res.status(400).json({err})
     })
 })
 
@@ -34,7 +34,7 @@ router.post('/createproject',requireLogin,(req,res)=>{
         res.json({post:result})
     })
     .catch(err=>{
-console.log(err)
+res.status(400).json({err})
     })
 })
 
