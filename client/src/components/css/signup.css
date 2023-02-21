@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600;700&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+   
+}
+
+#logo__svg_div{
+    display: flex;
+    justify-content: center;
+    margin: 1rem auto;
+    
+    
+}
+
+#signup__svg{
+    width: 100%;
+}
+#signup__svg_div{
+    width: 50%;
+    min-width: 260px;
+   
+}
+.form__details{
+    width: 50%;
+}
+
+input{
+    width: 100%;
+    height: 5vh;
+    border-radius: 8px;
+    padding: 10px;
+    border-color: #e4e4e4;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+input:focus{
+    border-bottom: solid #1db0b9;
+    outline: none;
+}
+
+.display__flex{
+    display:flex ;
+    justify-content: center;
+    flex-wrap: wrap;
+    
+
+}
+#signup__form{
+    width: 50%;
+ 
+    
+}
+#form{
+    display: flex;
+    flex-direction: column;
+    gap: 2.5vh;
+    margin-top: 5vh;
+    margin-left: 15vh;
+   
+}
+
+
+
+button:hover{
+    cursor: pointer;
+}
+button{
+    width: 50%;
+    border-radius: 8px;
+    height: 5vh;
+}
+
+#signup__button{
+    background-color:black ;
+    color: white;
+    font-size: medium;
+    -webkit-box-shadow: 4px 4px 10px -7px rgba(0,0,0,0.75);
+-moz-box-shadow: 4px 4px 10px -7px rgba(0,0,0,0.75);
+box-shadow: 4px 4px 10px -7px rgba(0,0,0,0.75);
+}
+
+
+#hr__div{
+    display: flex;
+    align-items: center;
+    gap:1vh;
+    
+
+
+}
+
+hr{
+    width: 23%;
+    height: 1px;
+}
+
+#google__signin{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: medium;
+    gap: 1vh;
+    border: none;
+    background-color: white;
+    -webkit-box-shadow: 4px 4px 10px -7px rgba(0,0,0,0.75);
+-moz-box-shadow: 4px 4px 10px -7px rgba(0,0,0,0.75);
+box-shadow: 4px 4px 10px -7px rgba(0,0,0,0.75);
+}
+
+#google{
+    height: 3.5vh;
+}
+#create__account{
+    text-align: center;
+    width: 50%;
+}
+#linkto__login{
+    text-align: center;
+    margin-top: 1vh;
+    width: 50%;
+
+}
+@media only screen and (max-width: 1150px) {
+ #signup__form{
+    width: 100%;
+ }
+ input{
+    width: 100%;
+ }
+ button{
+    width: 80%;
+ }
+ .form__details{
+    width: 80%;
+ }
+ #form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 0;
+ }
+ #signup__svg{
+    display: none;
+}
+ #create__account{
+    width: 100%;
+ }
+ #linkto__login{
+    width: 100%;
+ }
+  }

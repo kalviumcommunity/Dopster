@@ -41,4 +41,15 @@ res.status(400).json({error:err.message})
     })
 })
 
+router.get('/myprojects',requireLogin,(req,res)=>{
+    Post.find({postedBy:req.user._id})
+    .populate('postedBy',"_id name")
+    .then(myproject=>{
+        res.json({myproject})
+    })
+    .catch(err=>{
+        console.log(err)
+    })
+})
+
 module.exports= router

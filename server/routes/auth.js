@@ -12,9 +12,10 @@ const secret = process.env.SECRET
 
 router.post('/signup',(req,res)=>{
     const {name,email,password} = req.body
+    
 
     if(!email||!password||!name){
-       return res.status(422).json("plz add all the fields")
+       return res.status(422).json({error:"plz add all the fields"})
     }
     User.findOne({email:email}).then((savedUser)=>{
         if(savedUser){
@@ -49,7 +50,7 @@ router.post('/signin',(req,res)=>{
     const {email,password}= req.body
 
     if(!email||!password){
-        res.status(422).json({error:"plz fill all the fields"})
+       return res.status(422).json({error:"plz fill all the fields"})
     }
     User.findOne({email:email})
     .then(savedUser=>{
@@ -59,16 +60,17 @@ router.post('/signin',(req,res)=>{
         bcrypt.compare(password,savedUser.password)
         .then(doMatch=>{
             if(doMatch){
+                const {_id,name,email} = savedUser
                 // res.json({message:"Successfully signed in"})
                 const token = jwt.sign({_id:savedUser._id},secret)
-                res.json({token})
+                res.json({token,user:{_id,name,email}})
             }
             else{
-                res.status(422).json({error:"Invalid email or password"})
+               return res.status(422).json({error:"Invalid email or password"})
             }
         })
         .catch(err=>{
-            res.status(400).json({error:err.message})
+           return res.status(400).json({error:err.message})
         })
     })
 })
