@@ -1,0 +1,169 @@
+#home__div {
+  display: flex;
+  height: 80vh;
+  background-color: black;
+  flex-wrap: wrap;
+}
+
+#button-typography {
+  width: 50%;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 5vh;
+  justify-content: center;
+  padding-left: 5%;
+}
+
+#main__svg-div {
+  width: 50%;
+
+}
+
+#main__svg {
+  width: 80%;
+  min-width: 250px;
+
+}
+
+#primary__tagline {
+  color: white;
+  font-weight: bold;
+
+  width: 60%;
+}
+#secondary__tagline {
+  color: white;
+  font-size: 1em;
+  color: white;
+}
+
+#upload__btn {
+  background-color: #1db0b9;
+  border: none;
+  font-weight: bold;
+  width: 23%;
+  height: 6vh;
+  transition: 0.3s;
+}
+#upload__btn:hover{
+    background-color: black;
+    border: solid #1db0b9 3px;
+    color: #1db0b9;
+}
+
+#browse__btn {
+  background-color: black;
+  border-color: #1db0b9;
+  border-width: 3px;
+  color: #1db0b9;
+  font-weight: bold;
+  width: 23%;
+  height: 6vh;
+  transition: 0.3s;
+}
+#browse__btn:hover{
+    background-color: #1db0b9;
+    color: black;
+    border: none;
+}
+#buttons {
+  display: flex;
+  gap: 2%;
+}
+#what-we-offer{
+    text-align: center;
+    margin-top: 5vh;
+}
+#display{
+    width: 75%;
+    margin: 5% auto;
+}
+
+#our__services{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15vh;
+}
+.our__services-details{
+    width: 30vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+h4{
+    font-weight: lighter;
+}
+.our__services-icon{
+    width: 20%;
+}
+#footer{
+    background-color: black;
+    color: #1db0b9;
+}
+.footer__details{
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+}
+#footer__main{
+    margin-top: 5vh;
+    display: flex;
+    justify-content: space-evenly;
+}
+#footer__main img{
+    width: 4vh;
+}
+footer a{
+    text-decoration: none;
+    color: white;
+}
+#footer__logo-div{
+    display: flex;
+    justify-content: center;
+}
+#footer__logo{
+    height: 6vh;
+    display: none;
+}
+@media only screen and (max-width: 1150px) {
+  #button-typography {
+    width: 100%;
+    padding: 0;
+  }
+  #main__svg-div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #upload__btn {
+    width: 45%;
+  }
+  #browse__btn {
+    width: 45%;
+  }
+  #main__svg {
+    width: 80%;
+  }
+  #primary__tagline {
+    width: 100%;
+    text-align: center;
+  }
+  #secondary__tagline {
+    width: 100%;
+    text-align: center;
+  }
+  #our__services{
+    gap: 6vh;
+  }
+  #buttons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+ 
+}
