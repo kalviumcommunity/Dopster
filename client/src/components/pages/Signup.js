@@ -21,6 +21,13 @@ const Signup = () => {
 
  const  Postdata = async()=>{
   setIsLoading(true)
+  if(!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)){
+    toast.warning("invalid email")
+    setIsLoading(false)
+    return
+    
+  }
+
 
      fetch("http://localhost:7000/signup",{
       method:'POST',

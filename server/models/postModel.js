@@ -9,17 +9,17 @@ const postSchema = new mongoose.Schema({
         type:String,
         default:true
     },
+    link:{
+        type:String,
+        required:true
+    },
     photo:{
         type:String,
-        default:"No photo"
-    },
-    link:{
-type:String,
-required:true
+        required:true
     },
     postedBy:{
         type:id,
         ref:"User"
     }
 })
-module.exports = mongoose.model("Post",postSchema)
+mongoose.model("Post",postSchema)
