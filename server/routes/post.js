@@ -19,8 +19,8 @@ router.get('/allprojects',(req,res)=>{
 })
 
 router.post('/createproject',requireLogin,(req,res)=>{
-    const{title,body,link}= req.body
-    if(!title ||!body||!link){
+    const{title,body,link,photo}= req.body
+    if(!title ||!body||!link||!photo){
         return res.status(422).json({error:"plz add all the fields"})
     }
 
@@ -30,6 +30,7 @@ router.post('/createproject',requireLogin,(req,res)=>{
     const post = new Post ({
         title,
         body,
+        photo,
         link,
         postedBy:req.user
     })

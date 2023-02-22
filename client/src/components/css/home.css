@@ -45,6 +45,12 @@
   width: 23%;
   height: 6vh;
   transition: 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  border-radius: 8px;
+  color: black;
 }
 #upload__btn:hover{
     background-color: black;
