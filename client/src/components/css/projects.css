@@ -1,0 +1,60 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#top-section{
+    display:flex ;
+    justify-content: center;
+    align-items: center;
+}
+.hr{
+    width: 100%;
+}
+
+
+#all-cards{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10vh;
+    justify-content: space-around;
+
+}
+.card{
+    width: 310px;
+    border-radius: 8px;
+    background-color: #cdebed;
+    height: 320px;
+   
+    
+}
+#project-upload{
+    background-color: #1db0b9;
+    font-weight: bold;
+    width: 50%;
+
+}
+#upload-button-div{
+    width: 30%;
+    display: flex;
+    justify-content: center;
+}
+#project-main-div{
+    min-height: 100vh;
+}
+@media only screen and (max-width: 650px) {
+
+#all-cards{
+    gap: 6vh;
+}
+h2{
+    font-size: medium;
+}
+#upload-button-div{
+    width: 50%;
+}
+#project-upload{
+    width: 80%;
+}
+}

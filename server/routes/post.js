@@ -1,8 +1,8 @@
 const express= require('express')
 const router = express.Router()
-
+const mongoose = require('mongoose')
 const requireLogin = require('../middleware/requireLogin')
-const Post = require('../models/postModel')
+const Post = mongoose.model('Post')
 
 router.get('/allprojects',(req,res)=>{
     Post.find()

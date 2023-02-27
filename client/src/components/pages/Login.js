@@ -1,6 +1,7 @@
-import React,{useState} from 'react'
+import React,{useState,useContext} from 'react'
 import logo from '../assets/logo.svg'
 import authsvg from '../assets/loginsvg.svg'
+import {UserContext} from '../../App'
 import google from '../assets/googlelogo.svg'
 import '../css/login.css'
 import {Link} from 'react-router-dom'
@@ -12,6 +13,7 @@ import { ToastContainer, toast } from 'react-toastify';
 
 
 const Login = () => {
+  const {state,dispatch} = useContext(UserContext)
   
   const [password,setPassword]= useState("")
   const [email,setEmail]= useState("")
@@ -47,6 +49,10 @@ const Login = () => {
       setPassword("")
      }
      else{
+     
+      localStorage.setItem("jwt",data.token)
+      localStorage.setItem("user",JSON.stringify(data.user))
+      dispatch({type:"USER",payload:data.user})
      
      setTimeout(() => {
         
