@@ -1,34 +1,47 @@
-import React from "react";
-import logo from "../assets/logo.svg";
+import React,{useContext} from "react";
+
 import homesvg from "../assets/home.svg";
 import "../css/home.css";
-import ResponsiveAppBar from "../Navbar";
-import uploadIcon from "../assets/uploadicon.svg";
-import moneyIcon from "../assets/moneyicon.svg";
-import connectIcon from "../assets/connecticon.svg";
-import qualityIcon from "../assets/qualityicon.svg";
-import searchIcon from "../assets/searchicon.svg";
-import handIcon from "../assets/handicon.svg";
-import bluelogo from "../assets/bluelogo.svg";
-import instagram from "../assets/instagram.svg";
-import facebook from "../assets/facebook.svg";
-import linkedin from "../assets/linkedin.svg";
-import Offer from "./Offer";
+import ResponsiveAppBar from "./Navbar";
+import { Typewriter } from 'react-simple-typewriter'
 import Footer from "./Footer";
+import { UserContext } from '../../App';
+import Offer from "./Offer";
+import { useNavigate } from "react-router-dom";
 const Home = () => {
+  const {state,dispatch} = useContext(UserContext)
+  const navigate = useNavigate()
+
+  const uploadfunc=()=>{
+    if(state){
+      navigate('/upload')
+    }
+    else{
+      navigate('/login')
+    }
+  }
   return (
     <div>
       <ResponsiveAppBar />
       <div id="home__div">
         <div id="button-typography">
           <div id="primary__tagline">
-            <h1>Open the door to New Opportunities</h1>
+            <h1> <Typewriter
+             words={['Open the door for', 'New opportunities','With Dopster']}
+            loop={10}
+            cursor
+            cursorStyle='|'
+            typeSpeed={70}
+            deleteSpeed={80}
+            delaySpeed={1000}
+          /></h1>
           </div>
+          
           <div id="secondary__tagline">
             Be proud of your creations, share them with the world
           </div>
           <div id="buttons">
-            <a id="upload__btn" href="/upload" >Upload Projects</a>
+            <button onClick={()=>uploadfunc()} id="upload__btn" >Upload Projects</button>
             <button id="browse__btn">Browse Projects</button>
           </div>
         </div>
@@ -40,12 +53,15 @@ const Home = () => {
       <div id="what-we-offer">
         <h1>What do we offer?</h1>
       </div>
+     
       <div id="display">
+       
         <Offer/>
       </div>
-      <Footer/>
+<Footer/>
     </div>
   );
 };
 
 export default Home;
+
