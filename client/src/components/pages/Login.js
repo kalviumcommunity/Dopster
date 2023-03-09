@@ -1,7 +1,7 @@
-import React,{useState,useContext} from 'react'
+import React,{useState,useContext,useEffect} from 'react'
+import {UserContext} from '../../App'
 import logo from '../assets/logo.svg'
 import authsvg from '../assets/loginsvg.svg'
-import {UserContext} from '../../App'
 import google from '../assets/googlelogo.svg'
 import '../css/login.css'
 import {Link} from 'react-router-dom'
@@ -9,8 +9,9 @@ import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';
 import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
-  import { useNavigate } from "react-router-dom";
+  import { useNavigate} from "react-router-dom";
 
+  import HashLoader from 'react-spinners/HashLoader'
 
 const Login = () => {
   const {state,dispatch} = useContext(UserContext)
@@ -19,9 +20,18 @@ const Login = () => {
   const [email,setEmail]= useState("")
  const [isLoading,setIsLoading] = useState(false)
   const navigate=useNavigate()
+  const [loading,setLoading] = useState(false)
+  useEffect(()=>{
+    setLoading(true)
+    setTimeout(()=>{
+      setLoading(false)
+    },2000)
+  },[])
 
+ 
   const  Postdata = async()=>{
-  setIsLoading(true)
+    setIsLoading(true)
+  
   if(!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)){
     toast.warning("invalid email")
     setIsLoading(false)
@@ -49,26 +59,29 @@ const Login = () => {
       setPassword("")
      }
      else{
-     
       localStorage.setItem("jwt",data.token)
       localStorage.setItem("user",JSON.stringify(data.user))
       dispatch({type:"USER",payload:data.user})
      
      setTimeout(() => {
-        
+     
         navigate('/')
+     
+       
+      
       }, 500);
      }
       
       
   
-    }).catch(err=>{
-      console.log(err)
     })
   }
   return (
-    <>
-    <div id='logo__svg_div' >
+    <div className={loading?"loader":''}  >
+      {
+         loading? <HashLoader color="#36db" />:
+         <>
+         <div id='logo__svg_div' >
       <img src={logo} alt=""  />
     </div>
     <div className="display__flex" >
@@ -83,11 +96,11 @@ const Login = () => {
       
       <div className='form__details'>
         <h4>Email</h4>
-        <input type="text" placeholder='Email' value={email} onChange={(e)=>setEmail(e.target.value)}/>
+        <input className='input' type="text" placeholder='Email' value={email} onChange={(e)=>setEmail(e.target.value)}/>
       </div>
       <div className='form__details'>
         <h4>Password</h4>
-        <input type="password" placeholder='Password'  value={password} onChange={(e)=>setPassword(e.target.value)} />
+        <input type="password" className='input' placeholder='Password'  value={password} onChange={(e)=>setPassword(e.target.value)} />
       </div>
       
       {isLoading===true?    <Box sx={{display: 'flex'}}>
@@ -102,7 +115,9 @@ const Login = () => {
       </div>
     
    
-      <button id='google__signin' ><img id='google' src={google} alt="" />Continue with Google</button>
+      <button id='google__signin' onClick={()=>{
+        navigate('/googleauth')
+      }} ><img id='google' src={google} alt="" />Continue with Google</button>
     <h6 id="linkto__signup" >Don't have an account? <Link to='/signup' >Signup now</Link></h6>
     </div>
  
@@ -110,7 +125,10 @@ const Login = () => {
     </div>
    
    <ToastContainer/>
-    </>
+         </>
+      }
+    
+    </div>
   )
 }
 

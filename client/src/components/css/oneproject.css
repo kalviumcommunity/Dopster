@@ -1,0 +1,48 @@
+.main-div{
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    margin-top: 10vh;
+}
+
+#details-div{
+    background-color: #cdebed;
+    display: flex;
+    width: 80%;
+    height: 50vh;
+    border-radius: 8px;
+   
+}
+#project-image{
+
+    height: 30vh;
+}
+#live-demo-button{
+    border: solid black;
+    background-color: black;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    cursor: pointer;
+    height: 5vh;
+    width: 50%;
+    padding: .6em 1.3em;
+        font-size: 1em;
+    
+        font-weight: 600;
+        display: inline-block;
+        margin: 1vh;
+        text-align: center;
+
+}
+
+#details-typo{
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+    margin-left: 5%;
+}
+
+@media only screen and (max-width: 1150px) {
+
+}

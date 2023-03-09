@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import ResponsiveAppBar from "./Navbar";
+import HashLoader from 'react-spinners/HashLoader'
 import { ToastContainer, toast } from "react-toastify";
 import Background from "../assets/Group34.png";
 import "../css/upload.css";
@@ -9,6 +10,13 @@ const Upload = () => {
   const [link, setLink] = useState("");
   const [image, setImage] = useState("");
   const [url, setUrl] = useState("");
+  const [loading,setLoading] = useState(false)
+  useEffect(()=>{
+    setLoading(true)
+    setTimeout(()=>{
+      setLoading(false)
+    },3000)
+  },[])
   const postDetails = () => {
     const data = new FormData();
     data.append("file", image);
@@ -24,7 +32,7 @@ const Upload = () => {
         console.log(data.url);
         setUrl(data.url);
       })
-      .then(() => fetch("http://localhost:5000/projects/createpost", {
+      .then(() => fetch("http://localhost:7000/projects/createproject", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -34,7 +42,7 @@ const Upload = () => {
             title: title,
             description: description,
             link: link,
-            pic: url,
+            photo: url,
           }),
         })
       )
@@ -49,8 +57,10 @@ const Upload = () => {
       });
   };
   return (
-    <div id="upload-main">
-      <ResponsiveAppBar />
+    <div id="upload-main"  className={loading?"loader":''}>
+      {
+        loading?<HashLoader color="#36db" />:<>
+        <ResponsiveAppBar />
       <div id="upload-flex" style={{ backgroundImage: `url(${Background})` }}>
         <div id="form-background">
           <h2>Upload Your Project</h2>
@@ -89,6 +99,9 @@ const Upload = () => {
         </div>
       </div>
       <ToastContainer />
+      </>
+      }
+    
     </div>
   );
 };
