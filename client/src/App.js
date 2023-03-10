@@ -12,6 +12,7 @@ import Signup from "./components/pages/Signup";
 import Profile from "./components/pages/Profile";
 import Upload from "./components/pages/Upload";
 import Projects from "./components/pages/Projects";
+import HelpnSupport from "./components/pages/Help&support";
 import Oneproject from "./components/pages/Oneproject";
 import { reducer, initialState } from "../src/reducers/useReducer";
 import { useEffect, createContext, useReducer ,useContext} from "react";
@@ -37,7 +38,7 @@ const Routing = () => {
           <Route path="/login" element={<Login />} />
 
           <Route path="/signup" element={<Signup />} />
-
+          <Route path="/help&support" element={<HelpnSupport />} />
           <Route path="/myprofile" element={<Profile />} />
           <Route path="/upload" element={<Upload />} />
 

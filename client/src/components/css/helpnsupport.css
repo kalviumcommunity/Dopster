@@ -1,0 +1,13 @@
+#main-div{
+    min-height: 90vh;
+}
+
+.accordian{
+    width: 70%;
+}
+#all-accordian-div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5vh;
+}

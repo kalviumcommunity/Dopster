@@ -12,7 +12,7 @@ const Oneproject = () => {
 
     useEffect(()=>{
        
-        fetch(`http://localhost:7000/projects/project/${userid}`,{
+        fetch(process.env.REACT_APP_API+`/projects/project/${userid}`,{
             headers:{
                 "Authorization":"Bearer "+localStorage.getItem("jwt")
             }

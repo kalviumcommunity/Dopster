@@ -15,7 +15,7 @@ const [loading,setLoading] = useState(false)
 const navigate = useNavigate()
   useEffect(()=>{
     setLoading(true)
-    fetch("http://localhost:7000/projects/allprojects",{
+    fetch(process.env.REACT_APP_API+"/projects/allprojects",{
 
   }).then(res=>res.json())
   .then(result=>{
@@ -32,7 +32,7 @@ const navigate = useNavigate()
 
   }
   const likePost=(id)=>{
-    fetch('http://localhost:7000/projects/like',{
+    fetch(process.env.REACT_APP_API+'/projects/like',{
       method:"PUT",
       headers:{
         "Content-Type":"application/json",
@@ -57,7 +57,7 @@ const navigate = useNavigate()
 
   }
   const dislikePost=(id)=>{
-    fetch('http://localhost:7000/projects/dislike',{
+    fetch(process.env.REACT_APP_API+'/projects/dislike',{
       method:"PUT",
       headers:{
         "Content-Type":"application/json",

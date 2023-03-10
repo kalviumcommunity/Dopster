@@ -41,7 +41,7 @@ const Signup = () => {
     setIsLoading(false)
     return
   }
-     fetch("http://localhost:7000/signup",{
+     fetch(process.env.REACT_APP_API+"/signup",{
       method:'POST',
       headers:{
         "Content-Type":'application/json'

@@ -17,41 +17,61 @@ const Upload = () => {
       setLoading(false)
     },3000)
   },[])
-  const postDetails = () => {
+  const postDetails =async () => {
     const data = new FormData();
     data.append("file", image);
     data.append("upload_preset", "Dopster");
     data.append("cloud_name", "dfl44vyoj");
 
-    fetch("https://api.cloudinary.com/v1_1/dfl44vyoj/image/upload", {
+   const response = await fetch("https://api.cloudinary.com/v1_1/dfl44vyoj/image/upload", {
       method: "post",
       body: data,
     })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data.url);
-        setUrl(data.url);
+    const json = await response.json()
+    console.log(json.url)
+    // setUrl(json.url)
+    const resp = await fetch(process.env.REACT_APP_API+"/projects/createproject", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + localStorage.getItem("jwt"),
+        },
+        body: JSON.stringify({
+          title: title,
+          description: description,
+          link: link,
+          photo: json.url,
+        }),
       })
-      .then(() => fetch("http://localhost:7000/projects/createproject", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: "Bearer " + localStorage.getItem("jwt"),
-          },
-          body: JSON.stringify({
-            title: title,
-            description: description,
-            link: link,
-            photo: url,
-          }),
-        })
-      )
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.error) {
-          toast.error(data.error);
-        }
-      })
+      const postjson = await resp.json()
+      console.log(postjson)
+    
+      // .then((res) => res.json())
+      // .then((data) => {
+      //   console.log(data.url);
+      //   setUrl(data.url);
+      //   console.log(title,description,link,url)
+      // })
+      // .then(()=> fetch(process.env.REACT_APP_API+"/projects/createproject", {
+      //     method: "POST",
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //       Authorization: "Bearer " + localStorage.getItem("jwt"),
+      //     },
+      //     body: JSON.stringify({
+      //       title: title,
+      //       description: description,
+      //       link: link,
+      //       photo: url,
+      //     }),
+      //   })
+      // )
+      // .then((res) => res.json())
+      // .then((data) => {
+      //   if (data.error) {
+      //     toast.error(data.error);
+      //   }
+      // })
       .catch((err) => {
         console.log(err);
       });
