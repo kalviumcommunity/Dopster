@@ -2,12 +2,15 @@ const express = require('express')
 const router = express.Router()
 
 require('dotenv').config()
-
+const mongoose  = require('mongoose')
 const User = require('../models/userModel')
 const bcrypt = require('bcrypt')
 const jwt  = require('jsonwebtoken')
 const secret = process.env.SECRET
+const GoogleUser = mongoose.model("GoogleUser")
 
+const { OAuth2Client } = require("google-auth-library");
+const client = new OAuth2Client("382413014720-hc9v4e6gnh52giikp9u6f0qa79qj0f11.apps.googleusercontent.com");
 
 
 router.post('/signup',(req,res)=>{
@@ -74,5 +77,60 @@ router.post('/signin',(req,res)=>{
         })
     })
 })
+async function verifyToken(token) {
+    const ticket = await client.verifyIdToken({
+      idToken: token,
+      audience: "382413014720-hc9v4e6gnh52giikp9u6f0qa79qj0f11.apps.googleusercontent.com",
+    });
+    const payload = ticket.getPayload();
+    const user = { email: payload.email, name: payload.name };
+    return user;
+  }
+ 
+router.post('auth/googleauth',async (req,res)=>{
+    const {token} = req.body
+    console.log(token)
+    if(!token){
+        res.status(402).json({error:"token not found"})
+    }
+    const user = await verifyToken(token)
+    console.log(user)
+    
+    const userexist = await User.findOne({email:user.email})
+   
+    if(userexist){
+        const {_id,name,email} = userexist
+        const jwtoken = jwt.sign({_id:userexist._id},secret)
+        res.json({jwtoken,user:{_id,name,email}})
+       
+                
+    }
+    else{
+        const google = await GoogleUser.findOne({email:user.email})
+
+        if(google){
+            const jwtoken = jwt.sign({_id:google._id},secret)
+            const {_id,name,email} = google
+            res.json({jwtoken,user:{_id,name,email}})
+        }
+        else{
+            const Googleuser= await new GoogleUser ({
+                email:user.email,
+                name:user.name
+            })
+            await Googleuser.save()
+            const jwtoken = jwt.sign({_id:google._id},secret)
+            const {_id,name,email} = google
+            res.json({jwtoken,user:{_id,name,email}})
+        }
+      
+       
+       
+
+
+    }
+
+})
+
 
 module.exports = router
