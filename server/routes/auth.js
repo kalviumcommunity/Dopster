@@ -87,7 +87,7 @@ async function verifyToken(token) {
     return user;
   }
  
-router.post('auth/googleauth',async (req,res)=>{
+router.post('/auth/googleauth',async (req,res)=>{
     const {token} = req.body
     console.log(token)
     if(!token){
