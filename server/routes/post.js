@@ -19,8 +19,8 @@ router.get('/allprojects',(req,res)=>{
 })
 
 router.post('/createproject',requireLogin,(req,res)=>{
-    const{title,body,link,photo}= req.body
-    if(!title ||!body||!link||!photo){
+    const{title,description,link,photo}= req.body
+    if(!title ||!description||!link||!photo){
         return res.status(422).json({error:"plz add all the fields"})
     }
 
@@ -29,7 +29,7 @@ router.post('/createproject',requireLogin,(req,res)=>{
 
     const post = new Post ({
         title,
-        body,
+        body:description,
         photo,
         link,
         postedBy:req.user
@@ -52,5 +52,47 @@ router.get('/myprojects',requireLogin,(req,res)=>{
         console.log(err)
     })
 })
+router.put('/like',requireLogin,(req,res)=>{
+    Post.findByIdAndUpdate(req.body.postId,{
+        $push:{likes:req.user._id}
+    },{
+        new:true
+    }).populate("postedBy","_id name").exec((err,result)=>{
+        if(err){
+            return res.status(422).json({error:err})
+        }
+        else{
+            res.json(result)
+        }
+    })
+    
 
+})
+router.put('/dislike',requireLogin,(req,res)=>{
+    Post.findByIdAndUpdate(req.body.postId,{
+        
+        $pull:{likes:req.user._id}
+    },{
+        new:true
+    }).populate("postedBy","_id name").exec((err,result)=>{
+        if(err){
+            return res.status(422).json({error:err})
+        }
+        else{
+            res.json(result)
+        }
+    })
+    
+
+})
+
+router.get('/project/:id',(req,res)=>{
+    Post.findOne({_id:req.params.id})
+    .then(project=>{
+        res.json(project)
+    })
+    .catch(err=>{
+        return res.status(404).json({error:"Project not found"})
+    })
+})
 module.exports= router

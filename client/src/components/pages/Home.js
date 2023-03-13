@@ -42,7 +42,7 @@ const Home = () => {
           </div>
           <div id="buttons">
             <button onClick={()=>uploadfunc()} id="upload__btn" >Upload Projects</button>
-            <button id="browse__btn">Browse Projects</button>
+            <button id="browse__btn" onClick={()=>navigate("/allprojects")}>Browse Projects</button>
           </div>
         </div>
 

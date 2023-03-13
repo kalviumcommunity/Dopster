@@ -17,6 +17,9 @@
 
 #main__svg-div {
   width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
 }
 
@@ -101,38 +104,7 @@ h4{
 .our__services-icon{
     width: 20%;
 }
-#footer{
-    background-color: black;
-    color: #1db0b9;
-}
-.footer__details{
-    display: flex;
-    flex-direction: column;
-    gap: 1vh;
-}
-#footer__main{
-    margin-top: 5vh;
-    display: flex;
-    justify-content: space-evenly;
-}
-#footer__main img{
-    width: 4vh;
-}
-footer a{
-    text-decoration: none;
-    color: white;
-}
-#footer__logo-div{
-    display: flex;
-    justify-content: center;
-}
-#footer__logo{
-    height: 6vh;
-    display: none;
-}
-.footer-icon{
-  height: 2vh;
-}
+
 @media only screen and (max-width: 1150px) {
   #button-typography {
     width: 100%;

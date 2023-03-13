@@ -14,7 +14,11 @@ function ResponsiveAppBar() {
         <h5>About</h5>,
         <h5>Contact</h5>,
         <h5 onClick={()=>navigate("/myprofile")} >My Profile</h5>,
-        
+        <h5 onClick={()=>{
+          localStorage.clear()
+          dispatch({type:"CLEAR"})
+          navigate('/')
+         }} >Log out</h5>
        
       ]
     }
@@ -25,6 +29,7 @@ function ResponsiveAppBar() {
         <h5>Contact</h5>,
         <h5 onClick={()=>navigate("/signup")} >Signup</h5>,
         <h5 onClick={()=>navigate("/login")}>Sign in</h5>
+
       ]
     }
   }
@@ -38,6 +43,13 @@ function ResponsiveAppBar() {
         <Link to='/contact' >   <h5  className='nav-items'>Contact</h5></Link>
         <Link to='/myprofile' >   <h5  className='nav-items'>My Profile</h5></Link>
         </div>
+      </div>
+      <div id='signup__div-nav' >
+     <button  id='signup__button_nav' onClick={()=>{
+      localStorage.clear()
+      dispatch({type:"CLEAR"})
+      navigate('/')
+     }}>Log out</button>
       </div>
     </div>
         

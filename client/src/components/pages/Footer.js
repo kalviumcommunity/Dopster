@@ -1,9 +1,11 @@
 import React from 'react'
-import instagram from "../assets/instagram.svg";
-import facebook from "../assets/facebook.svg";
-import linkedin from "../assets/linkedin.svg";
+
 import bluelogo from "../assets/bluelogo.svg";
+import { useNavigate } from 'react-router-dom';
+import {AiOutlineCopyright,AiOutlineFacebook,AiOutlineInstagram,AiOutlineLinkedin} from 'react-icons/ai'
+import '../css/footer.css'
 const Footer = () => {
+  const navigate = useNavigate()
   return (
     
     <div id="footer">
@@ -17,7 +19,9 @@ const Footer = () => {
         
         <div className="footer__details">
           <h5>Support</h5>
-          <a href="/">Help & Support</a>
+          <a href="#" onClick={()=>{
+            navigate('/help&support')
+          }} >Help & Support</a>
           <a href="/">Trust & Safety</a>
         </div>
         
@@ -32,22 +36,27 @@ const Footer = () => {
           <a href="/">Terms & Conditions</a>
           <a href="/">Privacy Policy</a>
         </div>
-        <div className="footer__details">
-          <h5>Reach Us</h5>
-          <div>
-            <img src={instagram} alt="" />
-            <a href="/">Instagram</a>
-          </div>
-          <div>
-            <img src={facebook} alt="" />
-            <a href="/">Facebook</a>
-          </div>
-          <div>
-            <img src={linkedin} alt="" />
-            <a href="/">LinkedIn</a>
-          </div>
+
+      </div>
+      <hr className='footer-hr'  />
+      <div id='display-footer'  >
+      <p style={{display:'flex',alignItems:"center",margin:"1vh"}} ><AiOutlineCopyright/> Copyright. All rights reserved. 2023</p>
+      <div id='socials'  >
+          
+            <AiOutlineInstagram size={30}/>
+           
+          
+          
+          <AiOutlineFacebook size={30}/>
+        
+      
+
+            <AiOutlineLinkedin size={30}/>
+           
+      
         </div>
       </div>
+     
     </footer>
   </div>
   )

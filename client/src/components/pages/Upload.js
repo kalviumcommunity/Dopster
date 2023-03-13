@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import ResponsiveAppBar from "./Navbar";
+import HashLoader from 'react-spinners/HashLoader'
 import { ToastContainer, toast } from "react-toastify";
 import Background from "../assets/Group34.png";
 import "../css/upload.css";
@@ -9,48 +10,77 @@ const Upload = () => {
   const [link, setLink] = useState("");
   const [image, setImage] = useState("");
   const [url, setUrl] = useState("");
-  const postDetails = () => {
+  const [loading,setLoading] = useState(false)
+  useEffect(()=>{
+    setLoading(true)
+    setTimeout(()=>{
+      setLoading(false)
+    },3000)
+  },[])
+  const postDetails =async () => {
     const data = new FormData();
     data.append("file", image);
     data.append("upload_preset", "Dopster");
     data.append("cloud_name", "dfl44vyoj");
 
-    fetch("https://api.cloudinary.com/v1_1/dfl44vyoj/image/upload", {
+   const response = await fetch("https://api.cloudinary.com/v1_1/dfl44vyoj/image/upload", {
       method: "post",
       body: data,
     })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data.url);
-        setUrl(data.url);
+    const json = await response.json()
+    console.log(json.url)
+    // setUrl(json.url)
+    const resp = await fetch(process.env.REACT_APP_API+"/projects/createproject", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + localStorage.getItem("jwt"),
+        },
+        body: JSON.stringify({
+          title: title,
+          description: description,
+          link: link,
+          photo: json.url,
+        }),
       })
-      .then(() => fetch("http://localhost:5000/projects/createpost", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: "Bearer " + localStorage.getItem("jwt"),
-          },
-          body: JSON.stringify({
-            title: title,
-            description: description,
-            link: link,
-            pic: url,
-          }),
-        })
-      )
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.error) {
-          toast.error(data.error);
-        }
-      })
+      const postjson = await resp.json()
+      console.log(postjson)
+    
+      // .then((res) => res.json())
+      // .then((data) => {
+      //   console.log(data.url);
+      //   setUrl(data.url);
+      //   console.log(title,description,link,url)
+      // })
+      // .then(()=> fetch(process.env.REACT_APP_API+"/projects/createproject", {
+      //     method: "POST",
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //       Authorization: "Bearer " + localStorage.getItem("jwt"),
+      //     },
+      //     body: JSON.stringify({
+      //       title: title,
+      //       description: description,
+      //       link: link,
+      //       photo: url,
+      //     }),
+      //   })
+      // )
+      // .then((res) => res.json())
+      // .then((data) => {
+      //   if (data.error) {
+      //     toast.error(data.error);
+      //   }
+      // })
       .catch((err) => {
         console.log(err);
       });
   };
   return (
-    <div id="upload-main">
-      <ResponsiveAppBar />
+    <div id="upload-main"  className={loading?"loader":''}>
+      {
+        loading?<HashLoader color="#36db" />:<>
+        <ResponsiveAppBar />
       <div id="upload-flex" style={{ backgroundImage: `url(${Background})` }}>
         <div id="form-background">
           <h2>Upload Your Project</h2>
@@ -89,6 +119,9 @@ const Upload = () => {
         </div>
       </div>
       <ToastContainer />
+      </>
+      }
+    
     </div>
   );
 };
