@@ -33,11 +33,11 @@ const GoogleAuth = () => {
       }),
     });
     const jsondata = await fetchdata.json();
-    console.log(jsondata);
+    // console.log(jsondata);
     localStorage.setItem("jwt", jsondata.jwtoken);
     localStorage.setItem("user", JSON.stringify(jsondata.user));
     dispatch({ type: "USER", payload: jsondata.user });
-
+    // console.log(state)
     navigate("/");
   }
 

@@ -7,7 +7,7 @@ const User = require('../models/userModel')
 const bcrypt = require('bcrypt')
 const jwt  = require('jsonwebtoken')
 const secret = process.env.SECRET
-const GoogleUser = mongoose.model("GoogleUser")
+
 
 const { OAuth2Client } = require("google-auth-library");
 const client = new OAuth2Client("382413014720-hc9v4e6gnh52giikp9u6f0qa79qj0f11.apps.googleusercontent.com");
@@ -94,7 +94,7 @@ router.post('/auth/googleauth',async (req,res)=>{
         res.status(402).json({error:"token not found"})
     }
     const user = await verifyToken(token)
-    console.log(user)
+   
     
     const userexist = await User.findOne({email:user.email})
    
@@ -114,14 +114,20 @@ router.post('/auth/googleauth',async (req,res)=>{
             res.json({jwtoken,user:{_id,name,email}})
         }
         else{
-            const Googleuser= await new GoogleUser ({
-                email:user.email,
-                name:user.name
-            })
-            await Googleuser.save()
-            const jwtoken = jwt.sign({_id:google._id},secret)
-            const {_id,name,email} = google
-            res.json({jwtoken,user:{_id,name,email}})
+               
+        const newuser= await new User ({
+            email:user.email,
+            password:"",
+            name:user.name,
+            isGoogleUser:true
+        })
+        await newuser.save()
+
+        const googleuser = await  User.findOne({email:user.email})
+        console.log(user)
+        const {_id,name,email} = googleuser
+        const jwtoken = jwt.sign({_id:googleuser._id},secret)
+        res.json({jwtoken,user:{_id,name,email}})
         }
       
        
