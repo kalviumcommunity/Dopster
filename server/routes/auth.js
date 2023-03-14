@@ -106,15 +106,6 @@ router.post('/auth/googleauth',async (req,res)=>{
                 
     }
     else{
-        const google = await User.findOne({email:user.email})
-
-        if(google){
-            const jwtoken = jwt.sign({_id:google._id},secret)
-            const {_id,name,email} = google
-            res.json({jwtoken,user:{_id,name,email}})
-        }
-        else{
-               
         const newuser= await new User ({
             email:user.email,
             password:"",
@@ -128,7 +119,8 @@ router.post('/auth/googleauth',async (req,res)=>{
         const {_id,name,email} = googleuser
         const jwtoken = jwt.sign({_id:googleuser._id},secret)
         res.json({jwtoken,user:{_id,name,email}})
-        }
+       
+       
       
        
        
