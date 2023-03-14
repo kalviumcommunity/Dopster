@@ -12,6 +12,7 @@ import Signup from "./components/pages/Signup";
 import Profile from "./components/pages/Profile";
 import Upload from "./components/pages/Upload";
 import Projects from "./components/pages/Projects";
+import GoogleAuth from "./components/pages/GoogleAuth";
 import HelpnSupport from "./components/pages/Help&support";
 import Oneproject from "./components/pages/Oneproject";
 import { reducer, initialState } from "../src/reducers/useReducer";
@@ -41,7 +42,7 @@ const Routing = () => {
           <Route path="/help&support" element={<HelpnSupport />} />
           <Route path="/myprofile" element={<Profile />} />
           <Route path="/upload" element={<Upload />} />
-
+          <Route path="/googleauth" element={<GoogleAuth/>} />
           <Route path="/allprojects" element={<Projects/>}/>
           <Route path="project/:userid" element={<Oneproject/>}/>
 

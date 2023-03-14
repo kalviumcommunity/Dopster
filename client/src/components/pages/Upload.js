@@ -3,6 +3,8 @@ import ResponsiveAppBar from "./Navbar";
 import HashLoader from 'react-spinners/HashLoader'
 import { ToastContainer, toast } from "react-toastify";
 import Background from "../assets/Group34.png";
+import Box from '@mui/material/Box';
+import CircularProgress from '@mui/material/CircularProgress';
 import "../css/upload.css";
 const Upload = () => {
   const [title, setTitle] = useState("");
@@ -11,13 +13,15 @@ const Upload = () => {
   const [image, setImage] = useState("");
   const [url, setUrl] = useState("");
   const [loading,setLoading] = useState(false)
+  const [isLoading,setIsLoading] = useState(false)
   useEffect(()=>{
     setLoading(true)
     setTimeout(()=>{
       setLoading(false)
-    },3000)
+    },2000)
   },[])
   const postDetails =async () => {
+    setIsLoading(true)
     const data = new FormData();
     data.append("file", image);
     data.append("upload_preset", "Dopster");
@@ -45,36 +49,16 @@ const Upload = () => {
       })
       const postjson = await resp.json()
       console.log(postjson)
+      setIsLoading(false)
+      if(postjson.error){
+        toast.error(postjson.error)
+      }
+      else{
+        toast.success("Project uploaded successfully")
     
-      // .then((res) => res.json())
-      // .then((data) => {
-      //   console.log(data.url);
-      //   setUrl(data.url);
-      //   console.log(title,description,link,url)
-      // })
-      // .then(()=> fetch(process.env.REACT_APP_API+"/projects/createproject", {
-      //     method: "POST",
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //       Authorization: "Bearer " + localStorage.getItem("jwt"),
-      //     },
-      //     body: JSON.stringify({
-      //       title: title,
-      //       description: description,
-      //       link: link,
-      //       photo: url,
-      //     }),
-      //   })
-      // )
-      // .then((res) => res.json())
-      // .then((data) => {
-      //   if (data.error) {
-      //     toast.error(data.error);
-      //   }
-      // })
-      .catch((err) => {
-        console.log(err);
-      });
+      }
+      
+     
   };
   return (
     <div id="upload-main"  className={loading?"loader":''}>
@@ -107,15 +91,21 @@ const Upload = () => {
             value={link}
             onChange={(e) => setLink(e.target.value)}
           />
+          <label for="input-image">Upload Image*</label>
           <input
             type="file"
             id="input-image"
             onChange={(e) => setImage(e.target.files[0])}
+            hidden
           />
-
+          
+ {isLoading===true?    <Box sx={{display: 'flex'}}>
+      <CircularProgress/>
+    </Box>:
           <button id="upload-button" onClick={() => postDetails()}>
             Upload
-          </button>
+
+          </button>}
         </div>
       </div>
       <ToastContainer />

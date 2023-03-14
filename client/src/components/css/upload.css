@@ -16,7 +16,18 @@
     justify-content: center;
     align-items: center;
 }
-
+#input-image{
+    width: 50%;
+}
+label {
+    background-color: #1db0b9;
+    color: white;
+    padding: 0.5rem;
+   
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 1rem;
+  }
 #form-background{
     background-color: white;
     width: 40%;

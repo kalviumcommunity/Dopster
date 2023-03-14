@@ -6,7 +6,7 @@ const Post = mongoose.model('Post')
 
 router.get('/allprojects',(req,res)=>{
     Post.find()
-    .populate('postedBy',"_id name email")
+    .populate('postedBy',"_id name")
     .then(posts=>{
         
         res.json({posts})
@@ -23,8 +23,12 @@ router.post('/createproject',requireLogin,(req,res)=>{
     if(!title ||!description||!link||!photo){
         return res.status(422).json({error:"plz add all the fields"})
     }
-
-    req.user.password=undefined;
+    console.log(req.user)
+    module.exports=req.user
+    if(req?.user?.password){
+        req.user.password=undefined;
+    }
+    
 
 
     const post = new Post ({
@@ -53,6 +57,7 @@ router.get('/myprojects',requireLogin,(req,res)=>{
     })
 })
 router.put('/like',requireLogin,(req,res)=>{
+    // console.log("this is user:"+req.user)
     Post.findByIdAndUpdate(req.body.postId,{
         $push:{likes:req.user._id}
     },{

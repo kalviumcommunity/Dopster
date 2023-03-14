@@ -52,7 +52,7 @@ const Login = () => {
     }).then(res=>res.json())
     .then(data=>{
       setIsLoading(false)
-      console.log(data)
+      
      if(data.error){
       toast.error(data.error)
       setEmail("")
@@ -62,7 +62,6 @@ const Login = () => {
       localStorage.setItem("jwt",data.token)
       localStorage.setItem("user",JSON.stringify(data.user))
       dispatch({type:"USER",payload:data.user})
-     
      setTimeout(() => {
      
         navigate('/')

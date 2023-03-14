@@ -26,6 +26,7 @@
     border-radius: 8px;
     background-color: #cdebed;
     height: 320px;
+    margin: 5vh auto;
    
     
 }
@@ -47,6 +48,8 @@
 
 #all-cards{
     gap: 6vh;
+    justify-content: center;
+    align-items: center;
 }
 h2{
     font-size: medium;
