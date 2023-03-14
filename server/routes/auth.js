@@ -106,7 +106,7 @@ router.post('/auth/googleauth',async (req,res)=>{
                 
     }
     else{
-        const google = await GoogleUser.findOne({email:user.email})
+        const google = await User.findOne({email:user.email})
 
         if(google){
             const jwtoken = jwt.sign({_id:google._id},secret)
