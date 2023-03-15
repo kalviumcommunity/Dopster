@@ -21,10 +21,9 @@ const GoogleAuth = () => {
   });
 
   async function handleCredentialResponse(response) {
-    console.log("Encoded JWT ID token: " + (await response.credential));
+    
     setLoading(true)
-    const userdetail = await jwt_decode(response.credential);
-    console.log(userdetail);
+    
     const fetchdata = await fetch(process.env.REACT_APP_API+"/auth/googleauth", {
       method: "POST",
       headers: {
