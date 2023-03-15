@@ -12,6 +12,8 @@ import Signup from "./components/pages/Signup";
 import Profile from "./components/pages/Profile";
 import Upload from "./components/pages/Upload";
 import Projects from "./components/pages/Projects";
+import Reset from "./components/pages/Reset";
+import Newpassword from "./components/pages/Newpassword";
 import GoogleAuth from "./components/pages/GoogleAuth";
 import HelpnSupport from "./components/pages/Help&support";
 import Oneproject from "./components/pages/Oneproject";
@@ -45,7 +47,9 @@ const Routing = () => {
           <Route path="/googleauth" element={<GoogleAuth/>} />
           <Route path="/allprojects" element={<Projects/>}/>
           <Route path="project/:userid" element={<Oneproject/>}/>
-
+          <Route path="/reset-password" element={<Reset/>}/>
+          <Route path="/newpassword/:id/:token" element={<Newpassword/>}/>
+        
         </Routes>
     </>
        

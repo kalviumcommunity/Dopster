@@ -17,6 +17,8 @@
     "google-auth-library": "^8.7.0",
     "jsonwebtoken": "^9.0.0",
     "mongodb": "^5.0.1",
-    "mongoose": "^6.9.1"
+    "mongoose": "^6.9.1",
+    "nodemailer": "^6.9.1",
+    "nodemailer-sendgrid-transport": "^0.2.0"
   }
 }
