@@ -145,7 +145,7 @@ router.post("/reset-password", async (req, res) => {
       setnewpass.save();
       res.status(201).json({ message: "Password updated successfully" });
     } else {
-      res.json("Link has been expired");
+      res.json({error:"Link has been expired"});
     }
   });
   async function verifyToken(token) {
