@@ -25,7 +25,7 @@ const Reset = () => {
   }, []);
 
   const Posteddata = async () => {
-    // setIsLoading(true);
+    setIsLoading(true);
 
     if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
       toast.warning("invalid email");
@@ -45,11 +45,13 @@ const Reset = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        setIsLoading(false)
         if (data.error) {
           toast.error(data.error);
           setEmail("");
         } else {
           toast.success(data.message);
+          
          
         }
       });

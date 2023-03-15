@@ -99,7 +99,7 @@ async function verifyToken(token) {
 router.post("/reset-password", async (req, res) => {
     const { email } = req.body;
     const userFind = await User.findOne({ email: email });
-    console.log(userFind);
+   
     const token = jwt.sign({ _id: userFind._id }, secret, {
       expiresIn: "1d",
     });
@@ -111,7 +111,7 @@ router.post("/reset-password", async (req, res) => {
       { resetToken: token },
       { new: true }
     );
-    console.log(setUserToken)
+ 
     if (setUserToken) {
       transporter.sendMail({
         to: userFind.email,

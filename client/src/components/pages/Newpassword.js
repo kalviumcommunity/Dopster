@@ -22,7 +22,7 @@ const Newpassword = () => {
   
   const Postdata = async () => {
     console.log(id)
-    // setIsLoading(true);
+    setIsLoading(true);
     if(password!==confirmPassword){
         toast.error("Both password should match")
         setIsLoading(false)
