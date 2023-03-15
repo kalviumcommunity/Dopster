@@ -122,7 +122,7 @@ router.post("/reset-password", async (req, res) => {
       subject: "Reset Password",
       html: `
             <p>You requested for password reset</p>
-            <h3>Click <a href="${process.env.LOCALHOST}/newpassword/${userFind._id}/${token}">here</a> to reset your password</h3>
+            <h3>Click <a href="https://dopster.pages.dev/newpassword/${userFind._id}/${token}">here</a> to reset your password</h3>
             `,
     });
     res

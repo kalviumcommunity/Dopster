@@ -100,9 +100,7 @@ const Login = () => {
       <div className='form__details'>
         <h4>Password</h4>
         <input type="password" className='input' placeholder='Password'  value={password} onChange={(e)=>setPassword(e.target.value)} />
-        <h6 onClick={()=>{
-          navigate('/reset-password')
-        }} style={{color:"blue"}} >Forgot Password?</h6>
+        <a href="/reset-password">Forgot password?</a>
       </div>
       
       {isLoading===true?    <Box sx={{display: 'flex'}}>
