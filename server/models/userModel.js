@@ -16,6 +16,9 @@ const userSchema = new mongoose.Schema({
     isGoogleUser:{
         type:Boolean,
         default:false
+    },
+    resetToken:{
+        type:String
     }
 })
 

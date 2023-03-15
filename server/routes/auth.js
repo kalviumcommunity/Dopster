@@ -3,7 +3,7 @@ const router = express.Router();
 
 require("dotenv").config();
 const mongoose = require("mongoose");
-const User = require("../models/userModel");
+const User = mongoose.model("User");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const secret = process.env.SECRET;
@@ -97,69 +97,66 @@ async function verifyToken(token) {
   return user;
 }
 router.post("/reset-password", async (req, res) => {
-  const { email } = req.body;
-
-  const userFind = await User.findOne({ email: email });
-  if(!userFind){
-    return res.status(404).json({error:"User doesn't exist"})
-  }
-  
-  const token = jwt.sign({ _id: userFind._id }, secret, {
-    expiresIn: "1d",
-  });
-
-  const { _id, name } = userFind;
-
-  const setUserToken = await User.findByIdAndUpdate(
-    { _id: _id },
-    { resetToken: token },
-    { new: true }
-  );
-  if (setUserToken) {
-    transporter.sendMail({
-      to: userFind.email,
-      from: "dopster.platform@gmail.com",
-      subject: "Reset Password",
-      html: `
-            <p>You requested for password reset</p>
-            <h3>Click <a href="https://dopster.pages.dev/newpassword/${userFind._id}/${token}">here</a> to reset your password</h3>
-            `,
+    const { email } = req.body;
+    const userFind = await User.findOne({ email: email });
+    console.log(userFind);
+    const token = jwt.sign({ _id: userFind._id }, secret, {
+      expiresIn: "1d",
     });
-    res
-      .status(200)
-      .json({
-        message: "password reset mail has been sent to you registered email",
-      });
-  }
-});
-router.post("/new-password/:id/:token", async (req, res) => {
-  const { id, token } = req.params;
-  const { password } = req.body;
-
-  const validuser = await User.findOne({ _id: id, resetToken: token });
-  // const verifytoken = jwt.verify(token,secret)
-  if (validuser) {
-    const newpassword = await bcrypt.hash(password, 12);
-    const setnewpass = await User.findByIdAndUpdate(
-      { _id: id },
-      { password: newpassword }
+  
+    const { _id, name } = userFind;
+  
+    const setUserToken = await User.findByIdAndUpdate(
+      { _id: _id },
+      { resetToken: token },
+      { new: true }
     );
-    setnewpass.save();
-    res.status(201).json({ message: "Password updated successfully" });
-  } else {
-    res.json("Link has been expired");
-  }
-});
-async function verifyToken(token) {
-  const ticket = await client.verifyIdToken({
-    idToken: token,
-    audience: process.env.GOOGLE_CLIENT_ID,
+    console.log(setUserToken)
+    if (setUserToken) {
+      transporter.sendMail({
+        to: userFind.email,
+        from: "dopster.platform@gmail.com",
+        subject: "Reset Password",
+        html: `
+              <p>You requested for password reset</p>
+              <h3>Click <a href="${process.env.LOCALHOST}/newpassword/${userFind._id}/${token}">here</a> to reset your password</h3>
+              `,
+      });
+      res
+        .status(200)
+        .json({
+          message: "password reset mail has been sent to you registered email",
+        });
+    }
   });
-  const payload = ticket.getPayload();
-  const user = { email: payload.email, name: payload.name };
-  return user;
-}
-
+  router.post("/new-password/:id/:token", async (req, res) => {
+    const { id, token } = req.params;
+    const { password } = req.body;
+  console.log(token)
+    const validuser = await User.findOne({ _id: id, resetToken: token });
+    // const verifytoken = jwt.verify(token,secret)
+   
+    if (validuser) {
+      const newpassword = await bcrypt.hash(password, 12);
+      const setnewpass = await User.findByIdAndUpdate(
+        { _id: id },
+        { password: newpassword }
+      );
+      setnewpass.save();
+      res.status(201).json({ message: "Password updated successfully" });
+    } else {
+      res.json("Link has been expired");
+    }
+  });
+  async function verifyToken(token) {
+    const ticket = await client.verifyIdToken({
+      idToken: token,
+      audience: process.env.GOOGLE_CLIENT_ID,
+    });
+    const payload = ticket.getPayload();
+    const user = { email: payload.email, name: payload.name };
+    return user;
+  }
 router.post("/auth/googleauth", async (req, res) => {
   const { token } = req.body;
   console.log(token);

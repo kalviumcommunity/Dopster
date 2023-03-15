@@ -14,13 +14,14 @@ import { useNavigate,useParams } from "react-router-dom";
 //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
 const Newpassword = () => {
   const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const [confirmPassword, setConfirmPassword] = useState("");
   const {id,token} = useParams()
   
   const Postdata = async () => {
-    
+    console.log(id)
     // setIsLoading(true);
     if(password!==confirmPassword){
         toast.error("Both password should match")
@@ -42,13 +43,13 @@ const Newpassword = () => {
         console.log(data);
         if (data.error) {
           toast.error(data.error);
-          
+          setEmail("");
           setPassword("");
         } else {
           toast.success(data.message)
-        //   setTimeout(() => {
-        //     navigate("/login");
-        //   }, 1000);
+          setTimeout(() => {
+            navigate("/login");
+          }, 1000);
 
         }
       });
@@ -116,3 +117,4 @@ const Newpassword = () => {
 };
 
 export default Newpassword;
+
