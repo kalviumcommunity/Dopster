@@ -49,7 +49,7 @@ const Routing = () => {
           <Route path="project/:userid" element={<Oneproject/>}/>
           <Route path="/reset-password" element={<Reset/>}/>
           <Route path="/newpassword/:id/:token" element={<Newpassword/>}/>
-        
+          <Route path="*" element={<div>Not Found Error</div>} />
         </Routes>
     </>
        
