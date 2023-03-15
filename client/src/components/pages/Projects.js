@@ -21,7 +21,8 @@ const navigate = useNavigate()
   .then(result=>{
 
     setData(result.posts)
-    console.log(state)
+    console.log(result)
+ 
   })
   setTimeout(()=>{
     setLoading(false)

@@ -54,7 +54,7 @@ const Signup = () => {
     }).then(res=>res.json())
     .then(data=>{
       setIsLoading(false)
-      console.log(data)
+      // console.log(data)
      if(data.error){
       toast.error(data.error)
      }

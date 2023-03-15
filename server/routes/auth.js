@@ -2,12 +2,15 @@ const express = require('express')
 const router = express.Router()
 
 require('dotenv').config()
-
+const mongoose  = require('mongoose')
 const User = require('../models/userModel')
 const bcrypt = require('bcrypt')
 const jwt  = require('jsonwebtoken')
 const secret = process.env.SECRET
 
+
+const { OAuth2Client } = require("google-auth-library");
+const client = new OAuth2Client(GOOGLE_CLIENT_ID);
 
 
 router.post('/signup',(req,res)=>{
@@ -74,5 +77,58 @@ router.post('/signin',(req,res)=>{
         })
     })
 })
+async function verifyToken(token) {
+    const ticket = await client.verifyIdToken({
+      idToken: token,
+      audience:GOOGLE_CLIENT_ID ,
+    });
+    const payload = ticket.getPayload();
+    const user = { email: payload.email, name: payload.name };
+    return user;
+  }
+ 
+router.post('/auth/googleauth',async (req,res)=>{
+    const {token} = req.body
+    console.log(token)
+    if(!token){
+        res.status(402).json({error:"token not found"})
+    }
+    const user = await verifyToken(token)
+   
+    
+    const userexist = await User.findOne({email:user.email})
+   
+    if(userexist){
+        const {_id,name,email} = userexist
+        const jwtoken = jwt.sign({_id:userexist._id},secret)
+        res.json({jwtoken,user:{_id,name,email}})
+       
+                
+    }
+    else{
+        const newuser= await new User ({
+            email:user.email,
+            password:"",
+            name:user.name,
+            isGoogleUser:true
+        })
+        await newuser.save()
+
+        const googleuser = await  User.findOne({email:user.email})
+        console.log(user)
+        const {_id,name,email} = googleuser
+        const jwtoken = jwt.sign({_id:googleuser._id},secret)
+        res.json({jwtoken,user:{_id,name,email}})
+       
+       
+      
+       
+       
+
+
+    }
+
+})
+
 
 module.exports = router

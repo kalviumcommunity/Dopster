@@ -4,6 +4,7 @@ const app = express()
 const mongoose = require("mongoose")
 require('./models/userModel')
 require('./models/postModel')
+
 app.use(express.json())
 const cors = require('cors')
 app.use(cors())
