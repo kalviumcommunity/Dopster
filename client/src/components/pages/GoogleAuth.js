@@ -1,16 +1,17 @@
-import { useEffect, useContext } from "react";
+import { useEffect, useContext, useState } from "react";
 import jwt_decode from "jwt-decode";
 import { UserContext } from "../../App";
 import { useNavigate } from "react-router-dom";
 const GoogleAuth = () => {
   const { state, dispatch } = useContext(UserContext);
+  const [loading,setLoading] = useState(false)
   const navigate = useNavigate();
   useEffect(() => {
     /* global google */
 
     google.accounts.id.initialize({
       client_id:
-        "382413014720-hc9v4e6gnh52giikp9u6f0qa79qj0f11.apps.googleusercontent.com",
+        process.env.REACT_APP_CLIENTID,
       callback: handleCredentialResponse,
     });
     google.accounts.id.renderButton(document.getElementById("signindiv"), {
@@ -21,6 +22,7 @@ const GoogleAuth = () => {
 
   async function handleCredentialResponse(response) {
     console.log("Encoded JWT ID token: " + (await response.credential));
+    setLoading(true)
     const userdetail = await jwt_decode(response.credential);
     console.log(userdetail);
     const fetchdata = await fetch(process.env.REACT_APP_API+"/auth/googleauth", {
@@ -37,6 +39,7 @@ const GoogleAuth = () => {
     localStorage.setItem("jwt", jsondata.jwtoken);
     localStorage.setItem("user", JSON.stringify(jsondata.user));
     dispatch({ type: "USER", payload: jsondata.user });
+    setLoading(false)
     // console.log(state)
     navigate("/");
   }
@@ -49,8 +52,9 @@ const GoogleAuth = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+        flexDirection:"column"
       }}
-    >
+    > <h4>{loading===true?"Signing you in...":""}</h4>
       <div id="signindiv"></div>
     </div>
   );

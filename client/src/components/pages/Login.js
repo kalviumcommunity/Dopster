@@ -52,7 +52,7 @@ const Login = () => {
     }).then(res=>res.json())
     .then(data=>{
       setIsLoading(false)
-      
+      console.log(data)
      if(data.error){
       toast.error(data.error)
       setEmail("")

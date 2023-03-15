@@ -10,7 +10,7 @@ const secret = process.env.SECRET
 
 
 const { OAuth2Client } = require("google-auth-library");
-const client = new OAuth2Client("382413014720-hc9v4e6gnh52giikp9u6f0qa79qj0f11.apps.googleusercontent.com");
+const client = new OAuth2Client(GOOGLE_CLIENT_ID);
 
 
 router.post('/signup',(req,res)=>{
@@ -80,7 +80,7 @@ router.post('/signin',(req,res)=>{
 async function verifyToken(token) {
     const ticket = await client.verifyIdToken({
       idToken: token,
-      audience: "382413014720-hc9v4e6gnh52giikp9u6f0qa79qj0f11.apps.googleusercontent.com",
+      audience:GOOGLE_CLIENT_ID ,
     });
     const payload = ticket.getPayload();
     const user = { email: payload.email, name: payload.name };
