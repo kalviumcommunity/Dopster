@@ -131,7 +131,7 @@ const navigate = useNavigate()
         </div>
       
         <hr className='hr' />
-        <p>By: {item.postedBy.name}</p>
+        <p>By: {item.postedBy?.name}</p>
         </div>
         
     )

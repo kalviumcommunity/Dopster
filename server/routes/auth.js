@@ -159,9 +159,9 @@ router.post("/reset-password", async (req, res) => {
   }
 router.post("/auth/googleauth", async (req, res) => {
   const { token } = req.body;
-  console.log(token);
+
   if (!token) {
-    res.status(402).json({ error: "token not found" });
+    res.status(402).json({ error: "Unexpected error occured" });
   }
   const user = await verifyToken(token);
 
