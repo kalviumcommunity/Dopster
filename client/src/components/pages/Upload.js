@@ -11,7 +11,7 @@ const Upload = () => {
   const [description, setDescription] = useState("");
   const [link, setLink] = useState("");
   const [image, setImage] = useState("");
-  const [url, setUrl] = useState("");
+  // const [url, setUrl] = useState("");
   const [loading,setLoading] = useState(false)
   const [isLoading,setIsLoading] = useState(false)
   useEffect(()=>{
