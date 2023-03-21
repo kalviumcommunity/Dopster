@@ -43,7 +43,7 @@ const Routing = () => {
           <Route path="/signup" element={<Signup />} />
           <Route path="/help&support" element={<HelpnSupport />} />
           <Route path="/myprofile" element={<Profile />} />
-          <Route path="/upload" element={<Upload />} />
+          <Route path="/upload" element={state?<Upload />:<Login/>} />
           <Route path="/googleauth" element={<GoogleAuth/>} />
           <Route path="/allprojects" element={<Projects/>}/>
           <Route path="project/:userid" element={<Oneproject/>}/>
