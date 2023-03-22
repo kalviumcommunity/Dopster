@@ -24,6 +24,7 @@
 .card{
     border-radius: 8px;
     margin: 5vh auto;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .card img {

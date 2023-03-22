@@ -175,6 +175,7 @@ router.post("/auth/googleauth", async (req, res) => {
     const newuser = await new User({
       email: user.email,
       password: "",
+      
       name: user.name,
       isGoogleUser: true,
     });
