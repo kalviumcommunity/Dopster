@@ -15,7 +15,8 @@ jwt.verify(token,process.env.SECRET,(err,payload)=>{
        return res.status(401).json({error:"you must be logged in"})
     } 
     const {_id} =payload
-    User.findById(_id).then(async userData=>{
+    console.log(payload)
+    User.findById(_id).then( userData=>{
       
         req.user= userData
         console.log(userData)

@@ -25,7 +25,8 @@ router.post('/createproject',requireLogin,(req,res)=>{
     }
     console.log(req.user)
     module.exports=req.user
-    if(req?.user?.password){
+    console.log(req.user)
+    if(req.user?.password){
         req.user.password=undefined;
     }
     

@@ -14,7 +14,7 @@ import { ToastContainer, toast } from 'react-toastify';
   import HashLoader from 'react-spinners/HashLoader'
 
 const Login = () => {
-  const {state,dispatch} = useContext(UserContext)
+  const {dispatch} = useContext(UserContext)
   
   const [password,setPassword]= useState("")
   const [email,setEmail]= useState("")
@@ -27,6 +27,7 @@ const Login = () => {
       setLoading(false)
     },2000)
   },[])
+  
 
  
   const  Postdata = async()=>{
@@ -100,6 +101,7 @@ const Login = () => {
       <div className='form__details'>
         <h4>Password</h4>
         <input type="password" className='input' placeholder='Password'  value={password} onChange={(e)=>setPassword(e.target.value)} />
+        <a href="/reset-password">Forgot password?</a>
       </div>
       
       {isLoading===true?    <Box sx={{display: 'flex'}}>

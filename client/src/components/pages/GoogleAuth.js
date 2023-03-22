@@ -6,25 +6,10 @@ const GoogleAuth = () => {
   const { state, dispatch } = useContext(UserContext);
   const [loading,setLoading] = useState(false)
   const navigate = useNavigate();
-  useEffect(() => {
-    /* global google */
-
-    google.accounts.id.initialize({
-      client_id:
-        process.env.REACT_APP_CLIENTID,
-      callback: handleCredentialResponse,
-    });
-    google.accounts.id.renderButton(document.getElementById("signindiv"), {
-      theme: "outline",
-      size: "xx-large",
-    });
-  });
-
-  async function handleCredentialResponse(response) {
-    console.log("Encoded JWT ID token: " + (await response.credential));
+  async function handleCallbackResponse(response) {
+    
     setLoading(true)
-    const userdetail = await jwt_decode(response.credential);
-    console.log(userdetail);
+    
     const fetchdata = await fetch(process.env.REACT_APP_API+"/auth/googleauth", {
       method: "POST",
       headers: {
@@ -35,15 +20,31 @@ const GoogleAuth = () => {
       }),
     });
     const jsondata = await fetchdata.json();
-    // console.log(jsondata);
     localStorage.setItem("jwt", jsondata.jwtoken);
     localStorage.setItem("user", JSON.stringify(jsondata.user));
     dispatch({ type: "USER", payload: jsondata.user });
     setLoading(false)
-    // console.log(state)
+ 
     navigate("/");
   }
 
+  useEffect(() => {
+    /* global google */
+   google.accounts.id.initialize({
+      client_id:
+        process.env.REACT_APP_CLIENTID,
+      callback: handleCallbackResponse,
+    });
+    google.accounts.id.renderButton(
+      document.getElementById("signindiv"),
+       {
+      theme: "outline",
+      size: "large",
+    }
+    );
+  },[]);
+
+  
   return (
     <div
       style={{

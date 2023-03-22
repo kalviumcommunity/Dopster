@@ -52,7 +52,7 @@
     width: 100%;
     position: absolute;
     display: none;
-    top: -20vh;
+    top: -30vh;
     
 }
 
@@ -61,7 +61,7 @@
 }
 @keyframes navanime {
     0%{
-        top: -20vh;
+        top: -30vh;
     }
     100%{
         top: 0vh;
@@ -75,7 +75,7 @@
         top: 0vh;
     }
     100%{
-        top: -20vh;
+        top: -30vh;
     }
 }
 
@@ -121,5 +121,9 @@
         padding-right: 10%;
         padding-top: 2vh ;
         padding-bottom: 2vh;
+    }
+
+    #mobile-menu h5 {
+        cursor: pointer;
     }
 }

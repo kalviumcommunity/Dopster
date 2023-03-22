@@ -12,9 +12,12 @@ import Signup from "./components/pages/Signup";
 import Profile from "./components/pages/Profile";
 import Upload from "./components/pages/Upload";
 import Projects from "./components/pages/Projects";
+import Reset from "./components/pages/Reset";
+import Newpassword from "./components/pages/Newpassword";
 import GoogleAuth from "./components/pages/GoogleAuth";
 import HelpnSupport from "./components/pages/Help&support";
 import Oneproject from "./components/pages/Oneproject";
+import TermsandConditions from "./components/pages/TermsandConditions";
 import { reducer, initialState } from "../src/reducers/useReducer";
 import { useEffect, createContext, useReducer ,useContext} from "react";
 export const UserContext = createContext();
@@ -33,6 +36,7 @@ const Routing = () => {
   return (
     
     <>
+
  <Routes>
           <Route path="/" element={<Home />} />
 
@@ -41,11 +45,14 @@ const Routing = () => {
           <Route path="/signup" element={<Signup />} />
           <Route path="/help&support" element={<HelpnSupport />} />
           <Route path="/myprofile" element={<Profile />} />
-          <Route path="/upload" element={<Upload />} />
+          <Route path="/upload" element={state?<Upload />:<Login/>} />
           <Route path="/googleauth" element={<GoogleAuth/>} />
           <Route path="/allprojects" element={<Projects/>}/>
           <Route path="project/:userid" element={<Oneproject/>}/>
-
+          <Route path="/reset-password" element={<Reset/>}/>
+          <Route path="/newpassword/:id/:token" element={<Newpassword/>}/>
+          <Route path="/term-and-conditions" element={<TermsandConditions/>}/>
+          <Route path="*" element={<div>Not Found Error</div>} />
         </Routes>
     </>
        

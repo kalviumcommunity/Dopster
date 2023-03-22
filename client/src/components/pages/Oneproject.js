@@ -25,7 +25,7 @@ const Oneproject = () => {
                
               },1000)
         })
-    },[])
+    },[userid])
    
   return (
     <>
@@ -39,7 +39,7 @@ const Oneproject = () => {
     <h3>Project Name: {data.title}</h3>
       <p>{data.body}</p>
     
-      <a id='live-demo-button' href={data.link} target='_blank' >Live Demo</a>
+      <a id='live-demo-button' rel='noreferrer' href={data.link} target='_blank' >Live Demo</a>
     </div>
    
     </div>

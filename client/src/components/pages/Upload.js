@@ -11,7 +11,7 @@ const Upload = () => {
   const [description, setDescription] = useState("");
   const [link, setLink] = useState("");
   const [image, setImage] = useState("");
-  const [url, setUrl] = useState("");
+  // const [url, setUrl] = useState("");
   const [loading,setLoading] = useState(false)
   const [isLoading,setIsLoading] = useState(false)
   useEffect(()=>{
@@ -26,7 +26,11 @@ const Upload = () => {
     data.append("file", image);
     data.append("upload_preset", "Dopster");
     data.append("cloud_name", "dfl44vyoj");
-
+if(!link.includes('http://'||'https://')){
+  toast.error("please include http or https in demo link")
+  setIsLoading(false)
+  return
+}
    const response = await fetch("https://api.cloudinary.com/v1_1/dfl44vyoj/image/upload", {
       method: "post",
       body: data,
