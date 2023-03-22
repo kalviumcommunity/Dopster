@@ -11,7 +11,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate,useParams } from "react-router-dom";
 
-//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
+
 const Newpassword = () => {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");

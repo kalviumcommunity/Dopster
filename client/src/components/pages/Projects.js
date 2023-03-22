@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../App";
 import HashLoader from "react-spinners/HashLoader";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
+import { Card, CardHeader, CardBody, CardFooter, Divider,Button ,ButtonGroup,Text,Heading,Image, Stack} from '@chakra-ui/react'
 const Projects = () => {
   const [data, setData] = useState([]);
   const [visible, setVisible] = useState(5);
@@ -101,6 +102,7 @@ const Projects = () => {
               <hr className="hr" />
               <h1 style={{ textAlign: "center" }}>Projects</h1>
               <div id="all-cards">
+                
                 {data.slice(0, visible).map((item) => {
                   return (
                     <div className="card" style={{ cursor: "pointer" }}>
@@ -139,7 +141,7 @@ const Projects = () => {
                   );
                 })}
 
-                <div id="show__more-div">
+                <div style={{width:"100%"}} id="show__more-div">
                   {visible < data.length ? (
                     <button
                       id="show__more-button"

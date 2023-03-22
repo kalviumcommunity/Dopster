@@ -122,4 +122,8 @@
         padding-top: 2vh ;
         padding-bottom: 2vh;
     }
+
+    #mobile-menu h5 {
+        cursor: pointer;
+    }
 }
