@@ -19,9 +19,7 @@ const Footer = () => {
         
         <div className="footer__details">
           <h5>Support</h5>
-          <a href="#" onClick={()=>{
-            navigate('/help&support')
-          }} >Help & Support</a>
+          <a href="/help&support">Help & Support</a>
           <a href="/">Trust & Safety</a>
         </div>
         
@@ -34,7 +32,7 @@ const Footer = () => {
         <div className="footer__details">
           <h5>Terms</h5>
           <a href="/term-and-conditions" >Terms & Conditions</a>
-          <a href="/">Privacy Policy</a>
+          <a href="/privacy">Privacy Policy</a>
         </div>
 
       </div>

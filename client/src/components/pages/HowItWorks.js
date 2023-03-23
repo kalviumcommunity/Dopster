@@ -1,7 +1,11 @@
 import React from 'react';
 import '../css/HowItWorks.css'
+import ResponsiveAppBar from './Navbar';
+import Footer from './Footer';
 function HowItWorks() {
   return (
+    <div>
+        <ResponsiveAppBar/>
     <div className="dopster-how-it-works" id="how-it-works">
       <h2>How it works</h2>
       <p>Welcome to Dopster, the online platform that allows you to easily upload and showcase your projects! Whether you're a creative professional, a student, or simply someone who loves to share your work with others, Dopster is the perfect place for you.</p>
@@ -12,6 +16,8 @@ function HowItWorks() {
         <li>Discover other projects: Dopster is also a great place to discover new and exciting projects from other users. You can browse projects by category, search for specific keywords, or check out what's trending on the platform. Who knows - you might just find your next source of inspiration!</li>
       </ol>
       <p>So what are you waiting for? Sign up for Dopster today and start sharing your projects with the world!</p>
+    </div>
+    <Footer/>
     </div>
   );
 }
