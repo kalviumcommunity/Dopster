@@ -11,7 +11,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 
 import HashLoader from "react-spinners/HashLoader";
-//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
+
 const Reset = () => {
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
