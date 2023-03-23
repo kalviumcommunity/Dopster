@@ -9,7 +9,7 @@ import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
   import HashLoader from 'react-spinners/HashLoader'
   import { useNavigate } from "react-router-dom";
-
+import GoogleAuth from './GoogleAuth'
 import {Link} from 'react-router-dom'
 
 const Signup = () => {
@@ -126,9 +126,10 @@ const Signup = () => {
     
     
    
-      <button id='google__signin' onClick={()=>{
+      {/* <button id='google__signin' onClick={()=>{
         navigate('/googleauth')
-      }} ><img id='google' src={google} alt="" />Continue with Google</button>
+      }} ><img id='google' src={google} alt="" />Continue with Google</button> */}
+       <div id="signindiv" style={{width:"50%",display:"flex",justifyContent:'center'}}><GoogleAuth/></div>
     <h6 id='linkto__login'  >Already have an account? <Link to='/login' >Login now</Link></h6>
     </div>
  

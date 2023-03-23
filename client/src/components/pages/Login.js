@@ -2,10 +2,11 @@ import React,{useState,useContext,useEffect} from 'react'
 import {UserContext} from '../../App'
 import logo from '../assets/logo.svg'
 import authsvg from '../assets/loginsvg.svg'
-import google from '../assets/googlelogo.svg'
+
 import '../css/login.css'
 import {Link} from 'react-router-dom'
 import Box from '@mui/material/Box';
+import GoogleAuth from './GoogleAuth'
 import CircularProgress from '@mui/material/CircularProgress';
 import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
@@ -116,9 +117,10 @@ const Login = () => {
       </div>
     
    
-      <button id='google__signin' onClick={()=>{
+      {/* <button id='google__signin' onClick={()=>{
         navigate('/googleauth')
-      }} ><img id='google' src={google} alt="" />Continue with Google</button>
+      }} ><img id='google' src={google} alt="" />Continue with Google</button> */}
+      <div id="signindiv" style={{width:"50%",display:"flex",justifyContent:'center'}}><GoogleAuth/></div>
     <h6 id="linkto__signup" >Don't have an account? <Link to='/signup' >Signup now</Link></h6>
     </div>
  

@@ -29,7 +29,7 @@ const Footer = () => {
           <h5>About</h5>
           <a href="/">About Us</a>
           <a href="/">Stories</a>
-          <a href="/">How it Works</a>
+          <a href="/how-it-works">How it Works</a>
         </div>
         <div className="footer__details">
           <h5>Terms</h5>

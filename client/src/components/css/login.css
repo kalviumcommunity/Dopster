@@ -33,6 +33,9 @@
 .form__details{
     width: 50%;
 }
+iframe{
+    width: 50%;
+}
 
 input{
     width: 100%;

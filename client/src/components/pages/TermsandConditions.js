@@ -5,12 +5,13 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ResponsiveAppBar from './Navbar';
+import Footer from './Footer';
 
 const TermsandConditions = () => {
   return (
     <div>
       <ResponsiveAppBar/>
-      <div>
+      <div style={{marginBottom:"10vh"}} >
 
       <div style={{textAlign:"center",margin:"5vh"}} >
     <h1>Terms and Conditions</h1>
@@ -125,6 +126,7 @@ const TermsandConditions = () => {
     
     </div>
       </div>
+      <Footer/>
     </div>
   )
 }
