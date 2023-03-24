@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../App";
 import HashLoader from "react-spinners/HashLoader";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
-import { Card, CardHeader, CardBody, CardFooter, Divider,Button ,ButtonGroup,Text,Heading,Image, Stack} from '@chakra-ui/react'
+
 const Projects = () => {
   const [data, setData] = useState([]);
   const [visible, setVisible] = useState(5);
@@ -14,6 +14,9 @@ const Projects = () => {
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
+
+  //Function too fetch all projects
+
   useEffect(() => {
     setLoading(true);
     fetch(process.env.REACT_APP_API + "/projects/allprojects", {})
@@ -29,6 +32,11 @@ const Projects = () => {
   const showMoreItems = () => {
     setVisible(visible + 6);
   };
+
+
+  //Function to like any project
+
+
   const likePost = (id) => {
     fetch(process.env.REACT_APP_API + "/projects/like", {
       method: "PUT",
@@ -54,6 +62,10 @@ const Projects = () => {
       })
       .catch((err) => console.log(err));
   };
+
+  //Function to dislike any project
+
+
   const dislikePost = (id) => {
     fetch(process.env.REACT_APP_API + "/projects/dislike", {
       method: "PUT",
@@ -79,6 +91,24 @@ const Projects = () => {
       })
       .catch((err) => console.log(err));
   };
+  //Function to post the like to backend
+
+  const sendLikes = async (likes) =>{
+
+    const likedata = await fetch('http://localhost:7000/projects/like-details',{
+      method:"POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        likes
+      })
+
+    })
+    const result = await likedata.json()
+    console.log(result)
+  }
+
   return (
     <>
       {" "}
@@ -114,24 +144,32 @@ const Projects = () => {
                       <div className="card-body">
                         <h3>{item.title}</h3>
                         <div>
-                          {state._id ? (
-                            item.likes.includes(state._id) ? (
-                              <FaHeart
-                                id="like-button"
-                                size={25}
-                                onClick={() => dislikePost(item._id)}
-                              />
+                          {
+                            state?state._id ? (
+                              item.likes.includes(state._id) ? (
+                                <FaHeart
+                                  id="like-button"
+                                  size={25}
+                                  onClick={() => dislikePost(item._id)}
+                                />
+                              ) : (
+                                <FaRegHeart
+                                  size={25}
+                                  onClick={() => likePost(item._id)}
+                                />
+                              )
                             ) : (
-                              <FaRegHeart
-                                size={25}
-                                onClick={() => likePost(item._id)}
-                              />
-                            )
-                          ) : (
-                            <h6>Login to like</h6>
-                          )}
+                              <h6>Login to like</h6>
+                            ):
 
-                          <div>{item.likes.length} likes</div>
+
+                            "Login to like"
+                          }
+                          
+
+                          <div onClick={()=>{
+                            sendLikes(item.likes)
+                          }} >{item.likes.length} likes</div>
                         </div>
 
                         <hr className="hr" />
@@ -141,7 +179,7 @@ const Projects = () => {
                   );
                 })}
 
-                <div style={{width:"100%"}} id="show__more-div">
+                <div style={{width:"100%",display:'flex',justifyContent:'center'}} id="show__more-div">
                   {visible < data.length ? (
                     <button
                       id="show__more-button"

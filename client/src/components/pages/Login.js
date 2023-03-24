@@ -34,7 +34,7 @@ const Login = () => {
   const  Postdata = async()=>{
     setIsLoading(true)
   
-  if(!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)){
+  if(!/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email)){
     toast.warning("invalid email")
     setIsLoading(false)
     return

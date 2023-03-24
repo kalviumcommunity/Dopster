@@ -8,14 +8,14 @@ import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useNavigate } from "react-router-dom";
+
 
 import HashLoader from "react-spinners/HashLoader";
 
 const Reset = () => {
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate();
+  
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     setLoading(true);
@@ -27,7 +27,7 @@ const Reset = () => {
   const Posteddata = async () => {
     setIsLoading(true);
 
-    if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+    if (!/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
       toast.warning("invalid email");
       setIsLoading(false);
       return;

@@ -3,7 +3,7 @@ const router = express.Router()
 const mongoose = require('mongoose')
 const requireLogin = require('../middleware/requireLogin')
 const Post = mongoose.model('Post')
-
+const User = mongoose.model("User")
 router.get('/allprojects',(req,res)=>{
     Post.find()
     .populate('postedBy',"_id name")
@@ -93,12 +93,36 @@ router.put('/dislike',requireLogin,(req,res)=>{
 })
 
 router.get('/project/:id',(req,res)=>{
-    Post.findOne({_id:req.params.id})
+    Post.findOne({_id:req.params.id}).populate("postedBy"," _id name")
     .then(project=>{
         res.json(project)
     })
     .catch(err=>{
         return res.status(404).json({error:"Project not found"})
+    })
+})
+
+
+router.post("/like-details", async(req,res)=>{
+    const {likes} = req.body
+    console.log(likes)
+    const userdetails = []
+    for( i=0;i<likes.length;i++){
+        
+       const user = await User.findById(likes[i])
+       userdetails.push(user.name)
+    }
+    res.status(200).json({userdetails})
+    console.log(userdetails)
+})
+
+router.post('/userprojects',(req,res)=>{
+    const{id} = req.body
+    console.log(id)
+    Post.find({postedBy:id})
+    .
+    then(projects=>{
+        console.log(projects)
     })
 })
 module.exports= router

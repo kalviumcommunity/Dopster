@@ -33,7 +33,7 @@ const Routing = () => {
   
     if(user){
       dispatch({type:"USER",payload:user})
-      navigate('/')
+     
     }
   },[])
   return (

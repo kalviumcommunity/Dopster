@@ -1,5 +1,5 @@
 .main-div{
-    min-height: 80vh;
+    min-height: 50vh;
     display: flex;
     justify-content: center;
     margin-top: 10vh;
@@ -13,9 +13,8 @@
     border-radius: 8px;
    
 }
-#project-image{
-
-    height: 30vh;
+#project-name{
+    margin-top: 2vh;
 }
 #live-demo-button{
     border: solid black;
@@ -25,13 +24,12 @@
     border-radius: 8px;
     cursor: pointer;
     height: 5vh;
-    width: 50%;
     padding: .6em 1.3em;
         font-size: 1em;
     
         font-weight: 600;
         display: inline-block;
-        margin: 1vh;
+        
         text-align: center;
 
 }

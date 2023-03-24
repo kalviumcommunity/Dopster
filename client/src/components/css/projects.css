@@ -13,6 +13,12 @@
     width: 100%;
 }
 
+#show__more-button{
+    background-color: #1db0b9;
+    width: 20%;
+    margin: 5vh auto;
+}
+
 
 #all-cards{
     display: flex;
@@ -101,5 +107,15 @@ h2{
 }
 #project-upload{
     width: 80%;
+}
+.card img {
+    transform: translateY(2%);
+}
+
+.card .card-body {
+    transform: translateY(0);
+}
+#show__more-button{
+    width: 50%;
 }
 }

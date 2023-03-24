@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from 'react'
 import logo from '../assets/logo.svg'
 import authsvg from '../assets/loginsvg.svg'
-import google from '../assets/googlelogo.svg'
+
 import '../css/signup.css'
 import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -30,7 +30,7 @@ const Signup = () => {
 
   const  Postdata = async()=>{
   setIsLoading(true)
-  if(!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)){
+  if(!/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email)){
     toast.warning("invalid email")
     setIsLoading(false)
     return
