@@ -23,13 +23,15 @@
 #all-cards{
     display: flex;
     flex-wrap: wrap;
-    gap: 10vh;
+    column-gap: 10vh;
+    row-gap: 5vh;
     justify-content: space-around;
+    margin-top: 5vh;
 }
+
 
 .card{
     border-radius: 8px;
-    margin: 5vh auto;
     -webkit-tap-highlight-color: transparent;
 }
 
@@ -38,7 +40,6 @@
     height: 320px;
     position: relative;
     z-index: 2;
-    transform: translateY(52%);
     transition: 00.5s;
     /* border: #1db0b9 solid 5px; */
 }
@@ -53,7 +54,7 @@
       0 6.7px 5.3px rgba(0, 0, 0, 0.081), 0 12.5px 10px rgba(0, 0, 0, 0.1),
       0 22.3px 17.9px rgba(0, 0, 0, 0.119),
       0 41.8px 33.4px rgba(0, 0, 0, 0.144), 0 100px 80px rgba(0, 0, 0, 0.2);
-    transform: translateY(-50%);
+    transform: translateY(-150%);
     transition: 0.5s;
 }
 
