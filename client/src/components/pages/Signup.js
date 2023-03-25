@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from 'react'
 import logo from '../assets/logo.svg'
 import authsvg from '../assets/loginsvg.svg'
-import google from '../assets/googlelogo.svg'
+
 import '../css/signup.css'
 import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -9,7 +9,7 @@ import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
   import HashLoader from 'react-spinners/HashLoader'
   import { useNavigate } from "react-router-dom";
-
+import GoogleAuth from './GoogleAuth'
 import {Link} from 'react-router-dom'
 
 const Signup = () => {
@@ -30,7 +30,7 @@ const Signup = () => {
 
   const  Postdata = async()=>{
   setIsLoading(true)
-  if(!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)){
+  if(!/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email)){
     toast.warning("invalid email")
     setIsLoading(false)
     return
@@ -126,9 +126,10 @@ const Signup = () => {
     
     
    
-      <button id='google__signin' onClick={()=>{
+      {/* <button id='google__signin' onClick={()=>{
         navigate('/googleauth')
-      }} ><img id='google' src={google} alt="" />Continue with Google</button>
+      }} ><img id='google' src={google} alt="" />Continue with Google</button> */}
+       <div id="signindiv" style={{width:"50%",display:"flex",justifyContent:'center'}}><GoogleAuth/></div>
     <h6 id='linkto__login'  >Already have an account? <Link to='/login' >Login now</Link></h6>
     </div>
  

@@ -44,6 +44,10 @@ footer a{
     margin: 1vh;
     color: white;
 }
+.footer-link{
+    font-weight: 500;
+    color: white;
+}
 .footer-hr{
  width: 100%;
  margin-top: 2vh;

@@ -1,11 +1,11 @@
 import React from 'react'
 
 import bluelogo from "../assets/bluelogo.svg";
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {AiOutlineCopyright,AiOutlineFacebook,AiOutlineInstagram,AiOutlineLinkedin} from 'react-icons/ai'
 import '../css/footer.css'
 const Footer = () => {
-  const navigate = useNavigate()
+  
   return (
     
     <div id="footer">
@@ -19,22 +19,20 @@ const Footer = () => {
         
         <div className="footer__details">
           <h5>Support</h5>
-          <a href="#" onClick={()=>{
-            navigate('/help&support')
-          }} >Help & Support</a>
-          <a href="/">Trust & Safety</a>
+          <Link to='/help&support' ><h4 className='footer-link' >Help & Support</h4></Link>
+          <h4 className='footer-link' >Trust & Safety</h4>
         </div>
         
         <div className="footer__details">
           <h5>About</h5>
-          <a href="/">About Us</a>
-          <a href="/">Stories</a>
-          <a href="/">How it Works</a>
+          <h4 className='footer-link'>About Us</h4>
+          <h4 className='footer-link' >Stories</h4>
+       <Link to="/how-it-works" ><h4 className='footer-link' >How it Works</h4></Link> 
         </div>
         <div className="footer__details">
           <h5>Terms</h5>
-          <a href="/term-and-conditions" >Terms & Conditions</a>
-          <a href="/">Privacy Policy</a>
+          <Link to='/term-and-conditions' ><h4 className='footer-link'>Terms & Conditions</h4></Link>
+          <Link to="/privacy-policy" ><h4 className='footer-link'>Privacy Policy</h4></Link>
         </div>
 
       </div>
@@ -43,15 +41,15 @@ const Footer = () => {
       <p style={{display:'flex',alignItems:"center",margin:"1vh"}} ><AiOutlineCopyright/> Copyright. All rights reserved. 2023</p>
       <div id='socials'  >
           
-            <AiOutlineInstagram size={30}/>
+            <a href="https://www.instagram.com/dopster.platform/" rel='noreferrer' target='_blank'><AiOutlineInstagram size={30}/></a>
            
           
           
-          <AiOutlineFacebook size={30}/>
+          <a href=""><AiOutlineFacebook size={30}/></a>
         
       
 
-            <AiOutlineLinkedin size={30}/>
+          <a href="https://www.linkedin.com/in/ayush-kumar-685119253/" rel='noreferrer' target='_blank'><AiOutlineLinkedin size={30}/></a>  
            
       
         </div>

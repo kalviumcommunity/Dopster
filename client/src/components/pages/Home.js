@@ -9,7 +9,7 @@ import { UserContext } from '../../App';
 import Offer from "./Offer";
 import { useNavigate } from "react-router-dom";
 const Home = () => {
-  const {state,dispatch} = useContext(UserContext)
+  const {state} = useContext(UserContext)
   const navigate = useNavigate()
 
   const uploadfunc=()=>{
