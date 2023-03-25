@@ -125,7 +125,7 @@ router.post("/like-details", async(req,res)=>{
 router.post('/userprojects',(req,res)=>{
     const{id} = req.body
     console.log(id)
-    Post.find({postedBy:id})
+    Post.find({postedBy:id}).populate("postedBy", "_id name")
     .
     then(projects=>{
         console.log(projects)
