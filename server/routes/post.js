@@ -92,14 +92,20 @@ router.put('/dislike',requireLogin,(req,res)=>{
 
 })
 
-router.get('/project/:id',(req,res)=>{
-    Post.findOne({_id:req.params.id}).populate("postedBy"," _id name")
-    .then(project=>{
-        res.json(project)
-    })
-    .catch(err=>{
-        return res.status(404).json({error:"Project not found"})
-    })
+router.get('/project/:id', async (req,res)=>{
+    const findProject = await Post.findOne({_id:req.params.id}).populate("postedBy"," _id name")
+    if(!findProject){
+        return res.status(404).json({error:"No project found"})
+    }
+    const id = findProject.postedBy._id
+    const allprojects = await Post.find({postedBy:id}).populate("postedBy","_id name")
+    console.log(allprojects)
+    
+
+
+        res.status(200).json({findProject,allprojects})
+    
+    
 })
 
 
@@ -123,6 +129,7 @@ router.post('/userprojects',(req,res)=>{
     .
     then(projects=>{
         console.log(projects)
+        res.send(projects)
     })
 })
 module.exports= router
