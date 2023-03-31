@@ -7,7 +7,7 @@ import downsvg from "../assets/Downside.svg";
 import "../css/oneproject.css";
 import { UserContext } from "../../App";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
-
+import LoadingSkeleton from "./LoadingSkeleton";
 const Oneproject = () => {
   const { userid } = useParams();
   const [data, setData] = useState([]);
@@ -18,6 +18,7 @@ const Oneproject = () => {
   const { state } = useContext(UserContext);
   const navigate = useNavigate();
   useEffect(() => {
+    setLoading(true)
     fetch(process.env.REACT_APP_API + `/projects/project/${userid}`, {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwt"),
@@ -28,14 +29,14 @@ const Oneproject = () => {
         console.log(result);
         setData(result.findProject);
         setTotalProjects(result.allprojects.length);
-        // console.log(totalprojects)
-        // // setTotalProjects(result.allprojects)
-        // // console.log(totalprojects)
-        // // console.log(totalprojects.length)
+        setTimeout(()=>{
+          setLoading(false)
+        },2000)
       });
   }, [userid]);
 
   const getmoreprojects = async () => {
+   
     const fetchdata = await fetch(
       process.env.REACT_APP_API +"/projects/userprojects",
       {
@@ -51,6 +52,7 @@ const Oneproject = () => {
     const newdata = await fetchdata.json();
     console.log(newdata);
     setProject(newdata);
+  
   };
   //Function to post the like to backend
 
@@ -76,42 +78,47 @@ const Oneproject = () => {
     <>
       <ResponsiveAppBar />
       <div className={loading ? "loader" : "main-div"}>
-        {loading ? (
-          <HashLoader color="#36db" />
-        ) : (
-          <>
-            <div id="details-div">
-              <img
-                id="project-image"
-                src={data.photo}
-                alt=""
-                style={{ width: "50%" }}
-              />
-              <div id="details-typo">
-                <h3 id="project-name">Project Name: {data.title}</h3>
-                <h3> Description</h3>
-                <p>{data.body}</p>
+       
+          <>{
 
-                <a
-                  id="live-demo-button"
-                  rel="noreferrer"
-                  href={data.link}
-                  target="_blank"
-                >
-                  Live Demo
-                </a>
-                <h3
-                  onClick={() => {
-                    sendLikes();
-                  }}
-                >
-                  {data?.likes?.length} Likes
-                </h3>
-                {likedby?.userdetails}
+
+          }
+             {
+                loading? <LoadingSkeleton/> :           <div id="details-div">
+           
+                <img
+                  id="project-image"
+                  src={data.photo}
+                  alt=""
+                  style={{ width: "50%" }}
+                />
+                <div id="details-typo">
+                  <h3 id="project-name">Project Name: {data.title}</h3>
+                  <h3> Description</h3>
+                  <p>{data.body}</p>
+  
+                  <a
+                    id="live-demo-button"
+                    rel="noreferrer"
+                    href={data.link}
+                    target="_blank"
+                  >
+                    Live Demo
+                  </a>
+                  <h3
+                    onClick={() => {
+                      sendLikes();
+                    }}
+                  >
+                    {data?.likes?.length} Likes
+                  </h3>
+                  {likedby?.userdetails}
+                </div>
               </div>
-            </div>
+              }
+ 
           </>
-        )}
+        
       </div >
       {totalprojects > 1 ? (
         <div>

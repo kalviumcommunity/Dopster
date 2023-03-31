@@ -17,6 +17,7 @@ import Newpassword from "./components/pages/Newpassword";
 import GoogleAuth from "./components/pages/GoogleAuth";
 import PrivacyPolicy from "./components/pages/PrivacyPolicy";
 import HowItWorks from "./components/pages/HowItWorks";
+import ContactUs from "./components/pages/ContactUs";
 import HelpnSupport from "./components/pages/Help&support";
 import Oneproject from "./components/pages/Oneproject";
 import TermsandConditions from "./components/pages/TermsandConditions";
@@ -35,6 +36,7 @@ const Routing = () => {
       dispatch({type:"USER",payload:user})
      
     }
+    console.log(state)
   },[])
   return (
     
@@ -53,6 +55,7 @@ const Routing = () => {
           <Route path="/allprojects" element={<Projects/>}/>
           <Route path="/project/:userid" element={<Oneproject/>}/>
           <Route path="/reset-password" element={<Reset/>}/>
+          <Route path="/contactus" element={<ContactUs/>}/>
           <Route path="/newpassword/:id/:token" element={<Newpassword/>}/>
           <Route path="/term-and-conditions" element={<TermsandConditions/>}/>
           <Route path="/privacy-policy" element={<PrivacyPolicy/>}/>

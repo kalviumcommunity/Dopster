@@ -126,6 +126,11 @@ router.post('/userprojects',(req,res)=>{
     const{id} = req.body
     console.log(id)
     Post.find({postedBy:id}).populate("postedBy", "_id name")
+    // Post.aggregate(
+    //     {
+    //         $match:{postedBy:id}
+    //     }
+    // )
     .
     then(projects=>{
         console.log(projects)

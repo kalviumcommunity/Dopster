@@ -40,7 +40,7 @@ function ResponsiveAppBar() {
       <div className="menu">
         <div id='ul' >
         <Link to='/about'> <h5 className='nav-items'>About  </h5></Link>
-        <Link to='/contact' >   <h5  className='nav-items'>Contact</h5></Link>
+        <Link to='/contactus' >   <h5  className='nav-items'>Contact</h5></Link>
         <Link to='/myprofile' >   <h5  className='nav-items'>My Profile</h5></Link>
         </div>
       </div>
