@@ -26,7 +26,7 @@ const Upload = () => {
     data.append("file", image);
     data.append("upload_preset", "Dopster");
     data.append("cloud_name", "dfl44vyoj");
-if(!link.includes('http://')|| !link.includes("https://")){
+if(!link.includes('http')){
   toast.error("please include http or https in demo link")
   setIsLoading(false)
   return
