@@ -5,7 +5,7 @@ import {
   useNavigate,
 } from "react-router-dom";
 import "./App.css";
-
+import {PayPalScriptProvider} from "@paypal/react-paypal-js"
 import Home from "./components/pages/Home";
 import Login from "./components/pages/Login";
 import Signup from "./components/pages/Signup";
@@ -24,6 +24,7 @@ import TermsandConditions from "./components/pages/TermsandConditions";
 import { reducer, initialState } from "../src/reducers/useReducer";
 import { useEffect, createContext, useReducer ,useContext} from "react";
 import Error404 from "./components/pages/Error404";
+import OrderPage from "./components/pages/OrderPage";
 export const UserContext = createContext();
 
 const Routing = () => {
@@ -60,6 +61,7 @@ const Routing = () => {
           <Route path="/term-and-conditions" element={<TermsandConditions/>}/>
           <Route path="/privacy-policy" element={<PrivacyPolicy/>}/>
           <Route path="/how-it-works" element={<HowItWorks/>}/>
+          <Route path="/payment" element={<OrderPage/>}/>
           <Route path="*" element={<Error404/>} />
         </Routes>
     </>
@@ -73,11 +75,13 @@ function App() {
 
   return (
     <UserContext.Provider value={{state,dispatch}} >
+      <PayPalScriptProvider options={{"client-id":process.env.REACT_APP_PAYPAL_CLIENT_ID}} >
       <BrowserRouter>
         <Routing />
        
       
       </BrowserRouter>
+      </PayPalScriptProvider>
     </UserContext.Provider>
   );
 }

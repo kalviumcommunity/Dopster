@@ -10,12 +10,11 @@ const cors = require('cors')
 app.use(cors())
 app.use(require('./routes/auth'))
 app.use("/projects",require('./routes/post'))
-
-
-
-
- 
+app.get('/api/config/paypal',(req,res)=>{
+    res.send(process.env.PAYPAL_CLIENT_ID)
+})
 mongoose.set("strictQuery", false);
+
 
 mongoose.connect(process.env.MONGO_URI)
 .then(()=>{
