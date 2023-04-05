@@ -96,3 +96,7 @@
         transform: translateY(0);
     }
 }
+.comments-container {
+    display: flex;
+    flex-direction: column;
+}
