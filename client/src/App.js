@@ -14,6 +14,7 @@ import Upload from "./components/pages/Upload";
 import Projects from "./components/pages/Projects";
 import Reset from "./components/pages/Reset";
 import Newpassword from "./components/pages/Newpassword";
+import Payresult from "./components/pages/Payresult";
 import GoogleAuth from "./components/pages/GoogleAuth";
 import PrivacyPolicy from "./components/pages/PrivacyPolicy";
 import HowItWorks from "./components/pages/HowItWorks";
@@ -24,6 +25,7 @@ import TermsandConditions from "./components/pages/TermsandConditions";
 import { reducer, initialState } from "../src/reducers/useReducer";
 import { useEffect, createContext, useReducer ,useContext} from "react";
 import Error404 from "./components/pages/Error404";
+import Cashfree from "./components/pages/Cashfree";
 import OrderPage from "./components/pages/OrderPage";
 export const UserContext = createContext();
 
@@ -32,7 +34,7 @@ const Routing = () => {
   const {state,dispatch} = useContext(UserContext)
   useEffect(()=>{
     const user = JSON.parse(localStorage.getItem("user"))
-  
+    
     if(user){
       dispatch({type:"USER",payload:user})
      
@@ -62,6 +64,8 @@ const Routing = () => {
           <Route path="/privacy-policy" element={<PrivacyPolicy/>}/>
           <Route path="/how-it-works" element={<HowItWorks/>}/>
           <Route path="/payment" element={<OrderPage/>}/>
+          <Route path="/cashfree" element={<Cashfree/>}/>
+          <Route path="/cashfree/:orderid" element={<Payresult/>}/>
           <Route path="*" element={<Error404/>} />
         </Routes>
     </>

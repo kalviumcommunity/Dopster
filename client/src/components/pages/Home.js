@@ -7,6 +7,7 @@ import { Typewriter } from 'react-simple-typewriter'
 import Footer from "./Footer";
 import { UserContext } from '../../App';
 import Offer from "./Offer";
+import Paypalbutton from "./Paypalbutton";
 import { useNavigate } from "react-router-dom";
 const Home = () => {
   const {state} = useContext(UserContext)
@@ -28,7 +29,7 @@ const Home = () => {
           <div id="primary__tagline">
             <h1> <Typewriter
              words={['Open the door for', 'New opportunities','With Dopster']}
-            loop={10}
+            loop={25}
             cursor
             cursorStyle='|'
             typeSpeed={70}
@@ -67,6 +68,7 @@ const Home = () => {
           <h2>1 $</h2>
           <h4 >Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quos molestias repellendus tenetur, repellat impedit vero.</h4>
           <button onClick={()=>{
+           
             navigate('/payment')
           }} >Buy Now</button>
           </div>
@@ -75,7 +77,9 @@ const Home = () => {
           <h3>12 Month</h3> 
           <h2>10 $</h2>
           <h4>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quos molestias repellendus tenetur, repellat impedit vero.</h4>
-          <button>Buy Now</button>
+          <button onClick={()=>{
+            navigate('/cashfree')
+          }} >Buy Now</button>
           </div>
        
 

@@ -10,6 +10,7 @@
   "author": "Ayush kumar",
   "license": "ISC",
   "dependencies": {
+    "api": "^5.0.8",
     "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
@@ -18,7 +19,9 @@
     "jsonwebtoken": "^9.0.0",
     "mongodb": "^5.0.1",
     "mongoose": "^6.9.1",
+    "node-fetch": "^2.6.9",
     "nodemailer": "^6.9.1",
-    "nodemailer-sendgrid-transport": "^0.2.0"
+    "nodemailer-sendgrid-transport": "^0.2.0",
+    "random-string": "^0.2.0"
   }
 }

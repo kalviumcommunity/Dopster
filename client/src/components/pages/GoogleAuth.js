@@ -9,6 +9,8 @@ const GoogleAuth = () => {
   async function handleCallbackResponse(response) {
     
     setLoading(true)
+    const abcd = jwt_decode(response.credential)
+   console.log(abcd)
     
     const fetchdata = await fetch(process.env.REACT_APP_API+"/auth/googleauth", {
       method: "POST",

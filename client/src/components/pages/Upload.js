@@ -37,6 +37,7 @@ if(!link.includes('http')){
     })
     const json = await response.json()
     console.log(json.url)
+    
     // setUrl(json.url)
     const resp = await fetch(process.env.REACT_APP_API+"/projects/createproject", {
         method: "POST",

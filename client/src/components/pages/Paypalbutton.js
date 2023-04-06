@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
+import { cashfreeSandbox } from 'cashfree-dropjs';
+
 import {PayPalButtons} from '@paypal/react-paypal-js'
+let testCashfree = new cashfreeSandbox.Cashfree();
 const Paypalbutton = (props) => {
-    const {product} = props
+    const {product,amount} = props
     const [paidFor,setPaidFor] = useState(false)
     const [error,setError] = useState("")
     const handleApprove = (orderId)=>{
@@ -13,6 +16,7 @@ const Paypalbutton = (props) => {
         alert("Thanks for the purchase")
     }
   return (
+    <>
     <PayPalButtons
     style={{
         color:"silver",
@@ -47,7 +51,10 @@ const Paypalbutton = (props) => {
         setError(err)
         console.log("error",err)
     }}
+    
     />
+    <h1>{amount}</h1>
+    </>
   )
 }
 

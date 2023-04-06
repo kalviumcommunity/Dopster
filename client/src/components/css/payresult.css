@@ -1,0 +1,31 @@
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 50%;
+  }
+
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+
+  #summary-div{
+    display: flex;
+    padding-top: 10vh;
+    flex-direction: column;
+    gap: 5vh;
+    align-items: center;
+    min-height: 80vh;
+  }
+
+  @media only screen and (max-width: 700px) {
+
+    table {
+        border-collapse: collapse;
+        width: 80%;
+      }
+  }
