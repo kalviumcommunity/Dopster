@@ -5,6 +5,7 @@ import "../css/home.css";
 import ResponsiveAppBar from "./Navbar";
 import { Typewriter } from 'react-simple-typewriter'
 import Footer from "./Footer";
+import Paypalbutton from "./Paypalbutton";
 import { UserContext } from '../../App';
 import Offer from "./Offer";
 import { useNavigate } from "react-router-dom";
@@ -61,21 +62,15 @@ const Home = () => {
       <div>
         <h1 style={{textAlign:"center"}} >Premium Services</h1>
         <div id="subscriptions" >
-          <div className="subscription" >
-
-          <h3>1 Month</h3> 
-          <h2>1 $</h2>
-          <h4 >Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quos molestias repellendus tenetur, repellat impedit vero.</h4>
-          <button onClick={()=>{
-            navigate('/payment')
-          }} >Buy Now</button>
-          </div>
+          
           <div className="subscription" >
 
           <h3>12 Month</h3> 
           <h2>10 $</h2>
           <h4>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quos molestias repellendus tenetur, repellat impedit vero.</h4>
-          <button>Buy Now</button>
+          <button onClick={()=>{
+            navigate('/cashfree')
+          }} >Buy Now</button>
           </div>
        
 

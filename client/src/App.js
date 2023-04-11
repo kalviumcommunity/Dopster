@@ -13,6 +13,9 @@ import Profile from "./components/pages/Profile";
 import Upload from "./components/pages/Upload";
 import Projects from "./components/pages/Projects";
 import Reset from "./components/pages/Reset";
+
+import Payresult from "./components/pages/Payresult";
+import Cashfree from "./components/pages/Cashfree";
 import Newpassword from "./components/pages/Newpassword";
 import GoogleAuth from "./components/pages/GoogleAuth";
 import PrivacyPolicy from "./components/pages/PrivacyPolicy";
@@ -57,6 +60,8 @@ const Routing = () => {
           <Route path="/project/:userid" element={<Oneproject/>}/>
           <Route path="/reset-password" element={<Reset/>}/>
           <Route path="/contactus" element={<ContactUs/>}/>
+          <Route path="/cashfree" element={<Cashfree/>}/>
+          <Route path="/cashfree/:orderid" element={<Payresult/>}/>
           <Route path="/newpassword/:id/:token" element={<Newpassword/>}/>
           <Route path="/term-and-conditions" element={<TermsandConditions/>}/>
           <Route path="/privacy-policy" element={<PrivacyPolicy/>}/>
