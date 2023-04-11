@@ -58,6 +58,29 @@ const Home = () => {
        
         <Offer/>
       </div>
+      <div>
+        <h1 style={{textAlign:"center"}} >Premium Services</h1>
+        <div id="subscriptions" >
+          <div className="subscription" >
+
+          <h3>1 Month</h3> 
+          <h2>1 $</h2>
+          <h4 >Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quos molestias repellendus tenetur, repellat impedit vero.</h4>
+          <button onClick={()=>{
+            navigate('/payment')
+          }} >Buy Now</button>
+          </div>
+          <div className="subscription" >
+
+          <h3>12 Month</h3> 
+          <h2>10 $</h2>
+          <h4>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quos molestias repellendus tenetur, repellat impedit vero.</h4>
+          <button>Buy Now</button>
+          </div>
+       
+
+        </div>
+      </div>
 <Footer/>
     </div>
   );

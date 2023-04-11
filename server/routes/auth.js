@@ -74,10 +74,11 @@ router.post("/signin", (req, res) => {
       .compare(password, savedUser.password)
       .then((doMatch) => {
         if (doMatch) {
-          const { _id, name, email } = savedUser;
+          const { _id, name, email,pic,dopeCredits } = savedUser;
+          console.log(pic,dopeCredits)
           // res.json({message:"Successfully signed in"})
           const token = jwt.sign({ _id: savedUser._id }, secret);
-          res.json({ token, user: { _id, name, email } });
+          res.json({ token, user: { _id, name, email, pic , dopeCredits } });
         } else {
           return res.status(422).json({ error: "Invalid email or password" });
         }
@@ -168,9 +169,9 @@ router.post("/auth/googleauth", async (req, res) => {
   const userexist = await User.findOne({ email: user.email });
 
   if (userexist) {
-    const { _id, name, email } = userexist;
+    const { _id, name, email , pic, dopeCredits } = userexist;
     const jwtoken = jwt.sign({ _id: userexist._id }, secret);
-    res.json({ jwtoken, user: { _id, name, email } });
+    res.json({ jwtoken, user: { _id, name, email, pic, dopeCredits } });
   } else {
     const newuser = await new User({
       email: user.email,
