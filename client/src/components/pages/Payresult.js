@@ -8,7 +8,7 @@ const Payresult = () => {
   const { orderid } = useParams();
   useEffect(() => {
     const getPayStatus = async () => {
-      const resp = await fetch("http://localhost:7000/payment-result", {
+      const resp = await fetch(process.env.REACT_APP_API+"/payment-result", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

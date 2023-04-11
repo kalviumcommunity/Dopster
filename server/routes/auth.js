@@ -217,8 +217,8 @@ router.post('/cashfree',requireLogin,(req,res)=>{
     method: 'POST',
     headers: {
       accept: 'application/json',
-      'x-client-id': "TEST359302d833e06800aa4666debf203953",
-      'x-client-secret': 'TEST2e9974b525015753bde453ce29941388916693f5',
+      'x-client-id': process.env.CASHFREE_CLIENT_ID,
+      'x-client-secret': process.env.CASHFREE_SECRET,
       'x-api-version': '2022-09-01',
       'content-type': 'application/json'
     },
@@ -252,8 +252,8 @@ router.post('/cashfree',requireLogin,(req,res)=>{
       method: 'GET',
       headers: {
         accept: 'application/json',
-        'x-client-id': 'TEST359302d833e06800aa4666debf203953',
-        'x-client-secret': 'TEST2e9974b525015753bde453ce29941388916693f5',
+        'x-client-id': process.env.CASHFREE_CLIENT_ID,
+        'x-client-secret': process.env.CASHFREE_SECRET,
         'x-api-version': '2022-09-01'
       }
     };

@@ -6,7 +6,7 @@ const Profile = () => {
 const [userData,setUserData] = useState([])
   useEffect(()=>{
 const fetchData = async ()=>{
-    const data = await fetch('http://localhost:7000/profile',{
+    const data = await fetch(process.env.REACT_APP_API+'/profile',{
       method:'GET',
       headers:{
         "Content-Type": "application/json",
@@ -19,7 +19,7 @@ const fetchData = async ()=>{
     // console.log(userData)
   }
   const myproject = async()  =>{
-    const postdata = await fetch('http://localhost:7000/projects/myprojects',{
+    const postdata = await fetch(process.env.REACT_APP_API+'/projects/myprojects',{
       method:'GET',
       headers:{
         "Content-Type": "application/json",
