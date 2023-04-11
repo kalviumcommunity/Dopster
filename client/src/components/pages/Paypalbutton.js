@@ -1,18 +1,20 @@
 import React, { useState } from 'react'
+
+
 import {PayPalButtons} from '@paypal/react-paypal-js'
+
 const Paypalbutton = (props) => {
     const {product} = props
     const [paidFor,setPaidFor] = useState(false)
     const [error,setError] = useState("")
     const handleApprove = (orderId)=>{
-
         setPaidFor(true)
     }
-
     if(paidFor){
         alert("Thanks for the purchase")
     }
   return (
+    <>
     <PayPalButtons
     style={{
         color:"silver",
@@ -36,7 +38,6 @@ const Paypalbutton = (props) => {
         })
     }}
     onClick={(data,actions)=>{
-
     }}
     onApprove={async(data,actions)=>{
         const order = await actions.order.capture();
@@ -47,7 +48,10 @@ const Paypalbutton = (props) => {
         setError(err)
         console.log("error",err)
     }}
+
     />
+
+    </>
   )
 }
 

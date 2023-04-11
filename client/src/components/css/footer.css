@@ -1,7 +1,7 @@
 #footer{
     background-color: black;
     color: #1db0b9;
-    width: 100vw;
+    /* width: 100vw; */
 }
 .footer__details{
     display: flex;

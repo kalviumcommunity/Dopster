@@ -136,7 +136,7 @@ router.get("/project/:id", async (req, res) => {
     "postedBy",
     "_id name"
   );
-  console.log(allprojects);
+ 
 
   res.status(200).json({ findProject, allprojects });
 });
