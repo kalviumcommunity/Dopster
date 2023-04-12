@@ -3,6 +3,8 @@
     display: flex;
     justify-content: center;
     margin-top: 10vh;
+    gap: 5%;
+    flex-wrap: wrap;
 }
 
 #details-div{
@@ -16,6 +18,7 @@
 #project-name{
     margin-top: 2vh;
 }
+
 #live-demo-button{
     border: solid black;
     background-color: black;
@@ -31,6 +34,7 @@
         display: inline-block;
         
         text-align: center;
+      
 
 }
 #all-cards{
@@ -43,6 +47,13 @@
 }
 .margin{
     margin-bottom: 5vh;
+}
+
+#comment-div{
+    border: none;
+    background-color: #cdebed;
+    border-radius: 8px;
+    padding: 2vh;
 }
 .card-body {
     z-index: 1;
@@ -86,6 +97,10 @@
     gap: 2vh;
     margin-left: 5%;
 }
+.comments-container {
+    display: flex;
+    flex-direction: column;
+}
 
 @media only screen and (max-width: 1150px) {
     .card img {
@@ -95,8 +110,28 @@
     .card .card-body {
         transform: translateY(0);
     }
+   
 }
-.comments-container {
-    display: flex;
-    flex-direction: column;
+
+@media only screen and (max-width: 750px) {
+    #details-div{
+        flex-direction: column;
+        width: 90%;
+        height: fit-content;
+        padding: 1vh;
+        margin-bottom: 3vh;
+    }
+    #project-image{
+        width: 90%;
+        margin: 1vh auto;
+    }
+    #comment-div{
+        width: 90%;
+    }
+    #live-demo-button{
+        width: 50%;
+    }
+
+ 
+
 }
