@@ -12,7 +12,7 @@ function Cashfreepage() {
               Authorization: "Bearer " + localStorage.getItem("jwt"),
             },
             body: JSON.stringify({
-              amount:10
+              amount:50
             }),
           })
           const postjson = await resp.json()
