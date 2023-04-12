@@ -5,7 +5,7 @@ import { useState } from 'react';
 function Cashfreepage() {
 
     const abcd = async ()=>{
-        const resp = await fetch("http://localhost:7000/cashfree", {
+        const resp = await fetch(process.env.REACT_APP_API+"/cashfree", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
