@@ -19,14 +19,14 @@ const Projects = () => {
 
   useEffect(() => {
     setLoading(true);
+    console.log(loading);
     fetch(process.env.REACT_APP_API + "/projects/allprojects", {})
       .then((res) => res.json())
       .then((result) => {
         setData(result.posts);
         console.log(result);
+        setLoading(false);
       });
-
-    setLoading(false);
   }, []);
   const showMoreItems = () => {
     setVisible(visible + 6);
