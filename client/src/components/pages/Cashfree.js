@@ -47,7 +47,15 @@ function Cashfreepage() {
           </tr>
         </table>
         <div>
-          <button onClick={abcd} className="App">
+          <button
+            style={{
+              width: "fit-content",
+              paddingLeft: "20px",
+              paddingRight: "20px",
+            }}
+            onClick={abcd}
+            className="App"
+          >
             Cashfree Payments
           </button>
         </div>
