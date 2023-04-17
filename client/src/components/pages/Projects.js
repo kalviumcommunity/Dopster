@@ -19,23 +19,20 @@ const Projects = () => {
 
   useEffect(() => {
     setLoading(true);
+    console.log(loading);
     fetch(process.env.REACT_APP_API + "/projects/allprojects", {})
       .then((res) => res.json())
       .then((result) => {
         setData(result.posts);
         console.log(result);
+        setLoading(false);
       });
-    setTimeout(() => {
-      setLoading(false);
-    }, 2000);
   }, []);
   const showMoreItems = () => {
     setVisible(visible + 6);
   };
 
-
   //Function to like any project
-
 
   const likePost = (id) => {
     fetch(process.env.REACT_APP_API + "/projects/like", {
@@ -65,7 +62,6 @@ const Projects = () => {
 
   //Function to dislike any project
 
-
   const dislikePost = (id) => {
     fetch(process.env.REACT_APP_API + "/projects/dislike", {
       method: "PUT",
@@ -93,21 +89,22 @@ const Projects = () => {
   };
   //Function to post the like to backend
 
-  const sendLikes = async (likes) =>{
-
-    const likedata = await fetch('http://localhost:7000/projects/like-details',{
-      method:"POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        likes
-      })
-
-    })
-    const result = await likedata.json()
-    console.log(result)
-  }
+  const sendLikes = async (likes) => {
+    const likedata = await fetch(
+      "http://localhost:7000/projects/like-details",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          likes,
+        }),
+      }
+    );
+    const result = await likedata.json();
+    console.log(result);
+  };
 
   return (
     <>
@@ -132,7 +129,6 @@ const Projects = () => {
               <hr className="hr" />
               <h1 style={{ textAlign: "center" }}>Projects</h1>
               <div id="all-cards">
-                
                 {data.slice(0, visible).map((item) => {
                   return (
                     <div className="card" style={{ cursor: "pointer" }}>
@@ -144,8 +140,8 @@ const Projects = () => {
                       <div className="card-body">
                         <h3>{item.title}</h3>
                         <div>
-                          {
-                            state?state._id ? (
+                          {state ? (
+                            state._id ? (
                               item.likes.includes(state._id) ? (
                                 <FaHeart
                                   id="like-button"
@@ -160,16 +156,18 @@ const Projects = () => {
                               )
                             ) : (
                               <h6>Login to like</h6>
-                            ):
-
-
+                            )
+                          ) : (
                             "Login to like"
-                          }
-                          
+                          )}
 
-                          <div onClick={()=>{
-                            sendLikes(item.likes)
-                          }} >{item.likes.length} likes</div>
+                          <div
+                            onClick={() => {
+                              sendLikes(item.likes);
+                            }}
+                          >
+                            {item.likes.length} likes
+                          </div>
                         </div>
 
                         <hr className="hr" />
@@ -179,7 +177,14 @@ const Projects = () => {
                   );
                 })}
 
-                <div style={{width:"100%",display:'flex',justifyContent:'center'}} id="show__more-div">
+                <div
+                  style={{
+                    width: "100%",
+                    display: "flex",
+                    justifyContent: "center",
+                  }}
+                  id="show__more-div"
+                >
                   {visible < data.length ? (
                     <button
                       id="show__more-button"

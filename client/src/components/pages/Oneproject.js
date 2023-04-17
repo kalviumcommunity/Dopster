@@ -108,7 +108,7 @@ const Oneproject = () => {
                 id="project-image"
                 src={data.photo}
                 alt=""
-                style={{ width: "50%" }}
+                
               />
               <div id="details-typo">
                 <h3 id="project-name">Project Name: {data.title}</h3>
@@ -134,7 +134,7 @@ const Oneproject = () => {
               </div>
             </div>
           )}
-          <div style={{ display: "flex", flexDirection: "column" }}>
+          <div id="comment-div" style={{ display: "flex", flexDirection: "column" }}>
             <form
               className="comment-input"
               onSubmit={(e) => {
@@ -201,27 +201,6 @@ const Oneproject = () => {
                 <div className="card-body">
                   <h3>{item.title}</h3>
                   <div>
-                    {/* {state ? (
-                    state._id ? (
-                      item.likes.includes(state._id) ? (
-                        <FaHeart
-                          id="like-button"
-                          size={25}
-                          onClick={() => dislikePost(item._id)}
-                        />
-                      ) : (
-                        <FaRegHeart
-                          size={25}
-                          onClick={() => likePost(item._id)}
-                        />
-                      )
-                    ) : (
-                      <h6>Login to like</h6>
-                    )
-                  ) : (
-                    "Login to like"
-                  )} */}
-
                     <div
                       onClick={() => {
                         sendLikes(item.likes);

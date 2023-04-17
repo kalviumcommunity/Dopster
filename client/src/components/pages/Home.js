@@ -66,7 +66,7 @@ const Home = () => {
           <div className="subscription" >
 
           <h3>12 Month</h3> 
-          <h2>10 $</h2>
+          <h2>INR 50</h2>
           <h4>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quos molestias repellendus tenetur, repellat impedit vero.</h4>
           <button onClick={()=>{
             navigate('/cashfree')
