@@ -91,7 +91,7 @@ const Projects = () => {
 
   const sendLikes = async (likes) => {
     const likedata = await fetch(
-      "http://localhost:7000/projects/like-details",
+      process.env.REACT_APP_API + "/projects/like-details",
       {
         method: "POST",
         headers: {
