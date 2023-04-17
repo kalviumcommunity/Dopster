@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
@@ -8,11 +8,14 @@ import ResponsiveAppBar from "./Navbar";
 import Footer from "./Footer";
 
 const TermsandConditions = () => {
+  const [post, setPost] = useState([]);
   useEffect(() => {
     fetch(process.env.REACT_APP_GOLANG_API)
       .then((res) => res.json())
       .then((result) => {
-        console.log(result);
+        setPost(result.posts);
+
+        console.log(result.posts);
       });
   }, []);
   return (
@@ -23,7 +26,25 @@ const TermsandConditions = () => {
           <h1>Terms and Conditions</h1>
         </div>
         <div id="all-accordian-div">
-          <div className="accordian">
+          {post.map((item) => {
+            return (
+              <div className="accordian">
+                <Accordion>
+                  <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel1a-content"
+                    id="panel1a-header"
+                  >
+                    <h3>{item.Title}</h3>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <Typography>{item.Body}</Typography>
+                  </AccordionDetails>
+                </Accordion>
+              </div>
+            );
+          })}
+          {/* <div className="accordian">
             <Accordion>
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
@@ -144,7 +165,7 @@ const TermsandConditions = () => {
                 </Typography>
               </AccordionDetails>
             </Accordion>
-          </div>
+          </div> */}
         </div>
       </div>
       <Footer />
