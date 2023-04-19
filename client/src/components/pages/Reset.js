@@ -9,13 +9,12 @@ import CircularProgress from "@mui/material/CircularProgress";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-
 import HashLoader from "react-spinners/HashLoader";
 
 const Reset = () => {
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  
+
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     setLoading(true);
@@ -33,7 +32,7 @@ const Reset = () => {
       return;
     }
 
-    fetch(process.env.REACT_APP_API+"/reset-password", {
+    fetch(process.env.REACT_APP_API + "/reset-password", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -45,14 +44,12 @@ const Reset = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        setIsLoading(false)
+        setIsLoading(false);
         if (data.error) {
           toast.error(data.error);
           setEmail("");
         } else {
           toast.success(data.message);
-          
-         
         }
       });
   };

@@ -1,39 +1,38 @@
 .dopster-how-it-works {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 50px;
-  }
-  
-  .dopster-how-it-works h2 {
-    font-size: 2rem;
-    text-align: center;
-    margin-bottom: 40px;
-  }
-  
-  .dopster-how-it-works p {
-    font-size: 1.1rem;
-    line-height: 1.5;
-    margin-bottom: 20px;
-  }
-  
-  .dopster-how-it-works ol {
-    list-style: decimal;
-    margin-left: 30px;
-    margin-bottom: 30px;
-  }
-  
-  .dopster-how-it-works li {
-    font-size: 1.1rem;
-    line-height: 1.5;
-    margin-bottom: 10px;
-  }
-  
-  .dopster-how-it-works li::marker {
-    color: #007bff;
-    font-weight: bold;
-  }
-  
-  .dopster-how-it-works p:last-of-type {
-    margin-bottom: 0;
-  }
-  
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 50px;
+}
+
+.dopster-how-it-works h2 {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.dopster-how-it-works p {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.dopster-how-it-works ol {
+  list-style: decimal;
+  margin-left: 30px;
+  margin-bottom: 30px;
+}
+
+.dopster-how-it-works li {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.dopster-how-it-works li::marker {
+  color: #007bff;
+  font-weight: bold;
+}
+
+.dopster-how-it-works p:last-of-type {
+  margin-bottom: 0;
+}

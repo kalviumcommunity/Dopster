@@ -1,66 +1,64 @@
-#footer{
-    background-color: black;
-    color: #1db0b9;
-    /* width: 100vw; */
+#footer {
+  background-color: black;
+  color: #1db0b9;
+  /* width: 100vw; */
 }
-.footer__details{
-    display: flex;
-    flex-direction: column;
-    gap: 1vh;
-    align-items: center;
-    
+.footer__details {
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+  align-items: center;
 }
-#footer__main{
-    margin-top: 5vh;
-    display: flex;
-    justify-content: space-evenly;
+#footer__main {
+  margin-top: 5vh;
+  display: flex;
+  justify-content: space-evenly;
 }
-#footer__main img{
-    width: 4vh;
+#footer__main img {
+  width: 4vh;
 }
-footer a{
-    text-decoration: none;
-    color: white;
+footer a {
+  text-decoration: none;
+  color: white;
 }
-#footer__logo-div{
-    display: flex;
-    justify-content: center;
+#footer__logo-div {
+  display: flex;
+  justify-content: center;
 }
-#footer__logo{
-    height: 6vh;
-    display: none;
+#footer__logo {
+  height: 6vh;
+  display: none;
 }
-#display-footer{
-    display: flex;
-    justify-content: center;
-    gap: 20%;
-    align-items: center;
-    color: white;
-
+#display-footer {
+  display: flex;
+  justify-content: center;
+  gap: 20%;
+  align-items: center;
+  color: white;
 }
-#socials{
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    margin: 1vh;
-    color: white;
+#socials {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin: 1vh;
+  color: white;
 }
-.footer-link{
-    font-weight: 500;
-    color: white;
+.footer-link {
+  font-weight: 500;
+  color: white;
 }
-.footer-hr{
- width: 100%;
- margin-top: 2vh;
- border: 1px solid #1db0b9;
+.footer-hr {
+  width: 100%;
+  margin-top: 2vh;
+  border: 1px solid #1db0b9;
 }
 @media only screen and (max-width: 750px) {
-    #footer__main{
-        flex-direction: column;
-     
-        gap: 3vh;
-       }
-       #display-footer{
-        flex-direction: column;
-       }
+  #footer__main {
+    flex-direction: column;
+
+    gap: 3vh;
+  }
+  #display-footer {
+    flex-direction: column;
+  }
 }
