@@ -104,12 +104,7 @@ const Oneproject = () => {
             <LoadingSkeleton />
           ) : (
             <div id="details-div">
-              <img
-                id="project-image"
-                src={data.photo}
-                alt=""
-                
-              />
+              <img id="project-image" src={data.photo} alt="" />
               <div id="details-typo">
                 <h3 id="project-name">Project Name: {data.title}</h3>
                 <h3> Description</h3>
@@ -134,7 +129,10 @@ const Oneproject = () => {
               </div>
             </div>
           )}
-          <div id="comment-div" style={{ display: "flex", flexDirection: "column" }}>
+          <div
+            id="comment-div"
+            style={{ display: "flex", flexDirection: "column" }}
+          >
             <form
               className="comment-input"
               onSubmit={(e) => {

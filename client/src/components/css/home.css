@@ -20,13 +20,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 
 #main__svg {
   width: 80%;
   min-width: 250px;
-
 }
 
 #primary__tagline {
@@ -48,12 +46,11 @@
   width: 23%;
   height: 6vh;
   transition: 0.3s;
- 
 }
-#upload__btn:hover{
-    background-color: black;
-    border: solid #1db0b9 3px;
-    color: #1db0b9;
+#upload__btn:hover {
+  background-color: black;
+  border: solid #1db0b9 3px;
+  color: #1db0b9;
 }
 
 #browse__btn {
@@ -66,53 +63,53 @@
   height: 6vh;
   transition: 0.3s;
 }
-#browse__btn:hover{
-    background-color: #1db0b9;
-    color: black;
-    border: none;
+#browse__btn:hover {
+  background-color: #1db0b9;
+  color: black;
+  border: none;
 }
 #buttons {
   display: flex;
   gap: 2%;
 }
-#what-we-offer{
-    text-align: center;
-    margin-top: 5vh;
+#what-we-offer {
+  text-align: center;
+  margin-top: 5vh;
 }
-#display{
-    width: 75%;
-    margin: 5% auto;
-}
-
-#our__services{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15vh;
-}
-.our__services-details{
-    width: 30vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-h4{
-    font-weight: lighter;
-}
-.our__services-icon{
-    width: 20%;
+#display {
+  width: 75%;
+  margin: 5% auto;
 }
 
-#subscriptions{
+#our__services {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15vh;
+}
+.our__services-details {
+  width: 30vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+h4 {
+  font-weight: lighter;
+}
+.our__services-icon {
+  width: 20%;
+}
+
+#subscriptions {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap:5%;
+  gap: 5%;
   flex-wrap: wrap;
 }
-.subscription{
+.subscription {
   width: 20%;
   min-width: 300px;
   display: flex;
@@ -124,20 +121,20 @@ h4{
   height: 40vh;
   margin: 5vh auto;
 }
-.subscription button{
+.subscription button {
   background-color: black;
   color: white;
 }
-.subscription h4{
+.subscription h4 {
   font-weight: 500;
   text-align: center;
   width: 90%;
 }
-.subscription h2{
+.subscription h2 {
   font-size: xx-large;
   font-weight: 600;
 }
-.subscription h3{
+.subscription h3 {
   padding-top: 2vh;
 }
 
@@ -169,13 +166,12 @@ h4{
     width: 100%;
     text-align: center;
   }
-  #our__services{
+  #our__services {
     gap: 6vh;
   }
-  #buttons{
+  #buttons {
     display: flex;
     align-items: center;
     justify-content: center;
   }
- 
 }

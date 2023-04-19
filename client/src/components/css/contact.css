@@ -1,44 +1,43 @@
 .contact {
-    background-color: #f5f5f5;
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 20px;
-  }
-  
-  .contact h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-  
-  .contact p {
-    font-size: 16px;
-    line-height: 1.5;
-    margin-bottom: 10px;
-  }
-  
-  .contact ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    margin-bottom: 10px;
-  }
-  
-  .contact li {
-    font-size: 16px;
-    line-height: 1.5;
-    margin-bottom: 5px;
-  }
-  
-  .contact li:last-child {
-    margin-bottom: 0;
-  }
-  
-  .contact a {
-    color: #007bff;
-    text-decoration: none;
-  }
-  
-  .contact a:hover {
-    text-decoration: underline;
-  }
-  
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.contact h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.contact p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.contact ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 10px;
+}
+
+.contact li {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 5px;
+}
+
+.contact li:last-child {
+  margin-bottom: 0;
+}
+
+.contact a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.contact a:hover {
+  text-decoration: underline;
+}

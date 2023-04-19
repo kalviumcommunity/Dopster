@@ -1,21 +1,19 @@
-import React, { useEffect, useState } from 'react'
-import Paypalbutton from './Paypalbutton'
+import React, { useEffect, useState } from "react";
+import Paypalbutton from "./Paypalbutton";
 
 const OrderPage = () => {
-    const product ={
-        description:"Dopster Premium",
-        price:1
-    }
+  const product = {
+    description: "Dopster Premium",
+    price: 1,
+  };
   return (
     <>
-    <div>
-       
-    </div>
-    <div className='paypal-button-container' >
+      <div></div>
+      <div className="paypal-button-container">
         <Paypalbutton product={product} />
-    </div>
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default OrderPage
+export default OrderPage;
