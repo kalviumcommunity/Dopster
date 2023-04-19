@@ -4,7 +4,7 @@ Dopster is a platform which allows creators of all kind to upload and showcase t
 
 ## 🛠 Technologies
 
-    Reactjs, Expressjs, Nodejs, Microservices, GoLang, Postgresql,
+    Reactjs, Expressjs, Nodejs, Microservices, GoLang, Postgresql, MongoDB
 
 ## Features
 

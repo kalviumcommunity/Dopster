@@ -9,8 +9,7 @@ import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useNavigate,useParams } from "react-router-dom";
-
+import { useNavigate, useParams } from "react-router-dom";
 
 const Newpassword = () => {
   const [password, setPassword] = useState("");
@@ -18,23 +17,23 @@ const Newpassword = () => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const [confirmPassword, setConfirmPassword] = useState("");
-  const {id,token} = useParams()
-  
+  const { id, token } = useParams();
+
   const Postdata = async () => {
-    console.log(id)
+    console.log(id);
     setIsLoading(true);
-    if(password!==confirmPassword){
-        toast.error("Both password should match")
-        setIsLoading(false)
-        return
+    if (password !== confirmPassword) {
+      toast.error("Both password should match");
+      setIsLoading(false);
+      return;
     }
-    fetch(process.env.REACT_APP_API+`/new-password/${id}/${token}`, {
+    fetch(process.env.REACT_APP_API + `/new-password/${id}/${token}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        password: password
+        password: password,
       }),
     })
       .then((res) => res.json())
@@ -46,11 +45,10 @@ const Newpassword = () => {
           setEmail("");
           setPassword("");
         } else {
-          toast.success(data.message)
+          toast.success(data.message);
           setTimeout(() => {
             navigate("/login");
           }, 1000);
-
         }
       });
   };
@@ -103,9 +101,7 @@ const Newpassword = () => {
                 </button>
               )}
 
-              <div id="hr__div">
-               
-              </div>
+              <div id="hr__div"></div>
             </div>
           </div>
         </div>
@@ -117,4 +113,3 @@ const Newpassword = () => {
 };
 
 export default Newpassword;
-
